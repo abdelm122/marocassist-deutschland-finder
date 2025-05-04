@@ -2,8 +2,26 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SearchForm from "@/components/SearchForm";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { UniversityProps } from "@/types/universityTypes";
+import { getAllUniversities } from "@/services/universityData";
+import UniversityCard from "@/components/UniversityCard";
 
 const Index = () => {
+  const [featuredUniversities, setFeaturedUniversities] = useState<UniversityProps[]>([]);
+  
+  useEffect(() => {
+    // Get all universities and filter to show only Studienkollegs
+    const allUniversities = getAllUniversities();
+    const studienkollegs = allUniversities
+      .filter(uni => uni.type === "Studienkolleg")
+      .slice(0, 6); // Limit to 6 for display
+    
+    setFeaturedUniversities(studienkollegs);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -65,6 +83,22 @@ const Index = () => {
           {/* Search Section */}
           <section className="mb-16">
             <SearchForm />
+          </section>
+          
+          {/* Featured Studienkollegs Section */}
+          <section className="mb-16">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl font-bold">Studienkollegs in Deutschland</h2>
+              <Link to="/results?type=Studienkolleg">
+                <Button variant="outline">Alle anzeigen</Button>
+              </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredUniversities.map((university) => (
+                <UniversityCard key={university.id} university={university} />
+              ))}
+            </div>
           </section>
           
           {/* Info Sections */}
