@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studienkollegs | MAROCASSIST - Studieren in Deutschland</title>
+    <meta name="description" content="Finde das richtige Studienkolleg in Deutschland für deine Ausbildung." />
+    <meta name="author" content="MAROCASSIST" />
+    <meta property="og:title" content="Studienkollegs | MAROCASSIST" />
+    <meta property="og:description" content="Finde das richtige Studienkolleg in Deutschland für deine Ausbildung." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@marocassist" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  </head>
+
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <!-- Header -->
+      <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+          <a href="index.html" class="text-2xl font-bold text-blue-600">MAROCASSIST</a>
+          <nav>
+            <ul class="flex space-x-6">
+              <li><a href="index.html" class="hover:text-blue-600 transition-colors">Startseite</a></li>
+              <li><a href="studienkollegs.html" class="hover:text-blue-600 transition-colors font-semibold text-blue-600">Studienkollegs</a></li>
+              <li><a href="#" class="hover:text-blue-600 transition-colors">Über uns</a></li>
+              <li><a href="#" class="hover:text-blue-600 transition-colors">Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      
+      <!-- Main Content -->
+      <main class="flex-grow">
+        <div class="container mx-auto px-4 py-10">
+          <!-- Search heading -->
+          <div class="mb-8">
+            <h1 class="text-3xl font-bold mb-2">Studienkollegs in Deutschland</h1>
+            <p class="text-gray-600">
+              Finde das passende Studienkolleg für deine Vorbildung und Interessen
+            </p>
+          </div>
+          
+          <!-- Search form -->
+          <div class="mb-10">
+            <div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-md">
+              <form id="filterForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="form-group">
+                    <label for="searchQuery" class="block text-gray-700 mb-2">Suchbegriff</label>
+                    <input type="text" id="searchQuery" placeholder="Name oder Ort..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="language" class="block text-gray-700 mb-2">Sprache</label>
+                    <div class="space-y-2">
+                      <div class="flex items-center">
+                        <input type="checkbox" id="germanFilter" name="language" value="deutsch" class="mr-2 filter-checkbox">
+                        <label for="germanFilter">Deutsch</label>
+                      </div>
+                      <div class="flex items-center">
+                        <input type="checkbox" id="englishFilter" name="language" value="englisch" class="mr-2 filter-checkbox">
+                        <label for="englishFilter">Englisch</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="flex justify-center">
+                  <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Filtern</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <!-- Results -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="studienkollegList">
+            <!-- Studienkollegs will be populated here via JavaScript -->
+          </div>
+        </div>
+      </main>
+      
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div>
+              <h3 class="text-xl font-bold mb-4">MAROCASSIST</h3>
+              <p class="text-gray-300">
+                Wir helfen marokkanischen Studenten, ihren Weg an deutsche Hochschulen zu finden.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-bold mb-4">Links</h3>
+              <ul class="space-y-2">
+                <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Startseite</a></li>
+                <li><a href="studienkollegs.html" class="text-gray-300 hover:text-white transition-colors">Studienkollegs</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Über uns</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Kontakt</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-bold mb-4">Kontakt</h3>
+              <ul class="space-y-2 text-gray-300">
+                <li>Email: info@marocassist.de</li>
+                <li>Tel: +49 123 456789</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+            <p>&copy; 2025 MAROCASSIST. Alle Rechte vorbehalten.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
