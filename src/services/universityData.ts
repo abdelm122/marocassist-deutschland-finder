@@ -8,7 +8,7 @@ const universities: UniversityProps[] = [
     description: "Eine der größten technischen Universitäten Deutschlands mit einem starken Fokus auf Ingenieurwissenschaften und Informatik.",
     location: "Berlin",
     imageUrl: "https://images.unsplash.com/photo-1483058712412-4245e9b90334",
-    type: "Universität",
+    type: "DSH",
   },
   {
     id: "fu-berlin",
@@ -16,7 +16,7 @@ const universities: UniversityProps[] = [
     description: "Eine forschungsorientierte Universität mit einem breiten Spektrum an Fächern in den Geistes-, Sozial- und Naturwissenschaften.",
     location: "Berlin",
     imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-    type: "Universität",
+    type: "DSH",
   },
   {
     id: "uni-hamburg",
@@ -24,7 +24,7 @@ const universities: UniversityProps[] = [
     description: "Eine der größten Universitäten Deutschlands mit einem umfangreichen Angebot an Studienfächern.",
     location: "Hamburg",
     imageUrl: "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e",
-    type: "Universität",
+    type: "DSH",
   },
   {
     id: "rwth-aachen",
@@ -32,7 +32,7 @@ const universities: UniversityProps[] = [
     description: "Eine der führenden technischen Universitäten Europas mit Schwerpunkt auf Ingenieurwissenschaften und Technologie.",
     location: "Aachen",
     imageUrl: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-    type: "Universität",
+    type: "DSH",
   },
   {
     id: "lmu-muenchen",
@@ -40,7 +40,7 @@ const universities: UniversityProps[] = [
     description: "Eine der renommiertesten Universitäten Europas mit einem breiten Fächerangebot und exzellenter Forschung.",
     location: "München",
     imageUrl: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
-    type: "Universität",
+    type: "DSH",
   },
   {
     id: "uni-heidelberg",
@@ -48,7 +48,7 @@ const universities: UniversityProps[] = [
     description: "Die älteste Universität Deutschlands mit einer starken internationalen Ausrichtung und hervorragenden Forschungsbedingungen.",
     location: "Heidelberg",
     imageUrl: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1",
-    type: "Universität",
+    type: "DSH",
   },
   {
     id: "uni-frankfurt",
@@ -56,30 +56,215 @@ const universities: UniversityProps[] = [
     description: "Eine forschungsstarke Universität mit einem breiten Fächerspektrum im Herzen von Frankfurt am Main.",
     location: "Frankfurt",
     imageUrl: "https://images.unsplash.com/photo-1551269901-5c5e14c25df7",
-    type: "Universität",
+    type: "DSH",
   },
+  // Studienkollegs from the list
   {
     id: "studienkolleg-heidelberg",
-    name: "Studienkolleg Heidelberg",
-    description: "Vorbereitung internationaler Studierender auf ein Studium an deutschen Hochschulen.",
+    name: "Studienkolleg an der Universität Heidelberg",
+    description: "Vorbereitung internationaler Studierender auf ein Studium an deutschen Hochschulen mit Kursen M, T, W, G, S.",
     location: "Heidelberg",
     imageUrl: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
     type: "Studienkolleg",
   },
   {
-    id: "studienkolleg-munchen",
-    name: "Studienkolleg München",
-    description: "Bereitet internationale Studierende auf die Feststellungsprüfung vor, die zum Studium an deutschen Hochschulen berechtigt.",
+    id: "studienkolleg-kit",
+    name: "Studienkolleg des KIT",
+    description: "Karlsruher Institut für Technologie bietet T-Kurse für internationale Studierende.",
+    location: "Karlsruhe",
+    imageUrl: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-konstanz",
+    name: "Studienkolleg an der HTWG Konstanz",
+    description: "Bietet T- und W-Kurse für internationale Studierende an einer Fachhochschule.",
+    location: "Konstanz",
+    imageUrl: "https://images.unsplash.com/photo-1477281765962-ef34e8bb0967",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-muenchen",
+    name: "Studienkolleg bei den Universitäten des Freistaates Bayern",
+    description: "Bereitet internationale Studierende auf die Feststellungsprüfung vor mit Kursen M, T, W, G.",
     location: "München",
     imageUrl: "https://images.unsplash.com/photo-1426604966848-d7adac402bff",
     type: "Studienkolleg",
   },
   {
-    id: "studienkolleg-berlin",
-    name: "Studienkolleg Berlin",
-    description: "Ein Vorbereitungskolleg für internationale Studierende in der Hauptstadt mit verschiedenen Schwerpunktkursen.",
+    id: "studienkolleg-coburg",
+    name: "Studienkolleg bei den Fachhochschulen des Freistaates Bayern",
+    description: "Fachhochschul-Studienkolleg mit TI- und WW-Kursen für internationale Studierende.",
+    location: "Coburg",
+    imageUrl: "https://images.unsplash.com/photo-1516979187457-637abb4f9353",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-tu-berlin",
+    name: "Studienkolleg an der TU Berlin",
+    description: "Ein Vorbereitungskolleg für internationale Studierende mit T-, TI-, WW- und W-Kursen.",
     location: "Berlin",
     imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-fu-berlin",
+    name: "Studienkolleg an der FU Berlin",
+    description: "Bietet T-, M-, W-, G- und S-Kurse für internationale Studierende.",
+    location: "Berlin",
+    imageUrl: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-hamburg",
+    name: "Studienkolleg Hamburg",
+    description: "Staatliches Studienkolleg mit M-, T-, W- und G-Kursen sowie einem Sonderlehrgang.",
+    location: "Hamburg",
+    imageUrl: "https://images.unsplash.com/photo-1572439048287-37659a75a4d6",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-frankfurt",
+    name: "Studienkolleg an der Goethe-Universität",
+    description: "Universitäts- und Fachhochschul-Studienkolleg mit M-, T-, W- und G-Kursen.",
+    location: "Frankfurt am Main",
+    imageUrl: "https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-darmstadt",
+    name: "Studienkolleg an der TU-Darmstadt",
+    description: "Bietet T- und G-Kurse sowie DSH-Kurse für internationale Studierende.",
+    location: "Darmstadt",
+    imageUrl: "https://images.unsplash.com/photo-1584697964400-2af6a2f6204c",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-kassel",
+    name: "Studienkolleg an der Universität Kassel",
+    description: "Universitäts- und Fachhochschul-Studienkolleg mit T- und W-Kursen.",
+    location: "Kassel",
+    imageUrl: "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-marburg",
+    name: "Studienkolleg Mittelhessen der Universität Marburg",
+    description: "Bietet M-, T-, W- und G-Kurse für internationale Studierende.",
+    location: "Marburg",
+    imageUrl: "https://images.unsplash.com/photo-1571424161765-c4080147b3fb",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-wismar",
+    name: "Studienkolleg an der Hochschule Wismar",
+    description: "Staatliches Universitäts-Studienkolleg mit TI-, W- und WW-Kursen.",
+    location: "Wismar",
+    imageUrl: "https://images.unsplash.com/photo-1575893930205-bb2825ccbdbd",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-hannover",
+    name: "Studienkolleg an der Universität Hannover",
+    description: "Staatliches Universitäts-Studienkolleg mit G-, M-, T- und W-Kursen.",
+    location: "Hannover",
+    imageUrl: "https://images.unsplash.com/photo-1544531586-fde5298cdd40",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-bochum",
+    name: "Studienkolleg des Ökumenischen Studienwerks e.V.",
+    description: "Staatlich genehmigtes Studienkolleg mit T-Kursen für internationale Studierende.",
+    location: "Bochum",
+    imageUrl: "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-mettingen",
+    name: "Studienkolleg Mettingen",
+    description: "Staatlich anerkanntes Studienkolleg mit T-, W-, G- und M-Kursen.",
+    location: "Mettingen",
+    imageUrl: "https://images.unsplash.com/photo-1585333222813-7dc234c024a4",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-mainz",
+    name: "Studienkolleg der Johannes-Gutenberg-Universität",
+    description: "Staatliches Universitäts-Studienkolleg mit M-, T-, W-, G- und S-Kursen.",
+    location: "Mainz",
+    imageUrl: "https://images.unsplash.com/photo-1499750310107-5fef28a66643",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-kaiserslautern",
+    name: "Internationales Studienkolleg der Hochschule Kaiserslautern",
+    description: "Staatliches FH/Uni-Studienkolleg mit TI/T- und WW/W-Kursen.",
+    location: "Kaiserslautern",
+    imageUrl: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-dresden",
+    name: "TUDIAS-Studienkolleg TU Dresden",
+    description: "Staatlich anerkanntes Studienkolleg mit M-, T- und W-Kursen.",
+    location: "Dresden",
+    imageUrl: "https://images.unsplash.com/photo-1544256718-3bcf237f3974",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-glauchau",
+    name: "Studienkolleg Glauchau",
+    description: "Staatlich anerkanntes Studienkolleg mit T-, TI-, W-, WW-Kursen und DSH.",
+    location: "Glauchau",
+    imageUrl: "https://images.unsplash.com/photo-1541882596-2b56f1de4a50",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-leipzig",
+    name: "Universität Leipzig Studienkolleg Sachsen",
+    description: "Staatliches Universitäts-Studienkolleg mit M-, T-, W-, G- und S-Kursen.",
+    location: "Leipzig",
+    imageUrl: "https://images.unsplash.com/photo-1577985043696-8bd54d9f093f",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-zittau",
+    name: "Hochschule Zittau/Görlitz Studienkolleg",
+    description: "Staatliches FH-Studienkolleg mit TI- und WW-Kursen.",
+    location: "Zittau",
+    imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-halle",
+    name: "Studienkolleg an der Martin-Luther-Universität Halle-Wittenberg",
+    description: "Staatliches Universitäts-Studienkolleg mit M-, T-, W-, G-, S-Kursen und DSH.",
+    location: "Halle",
+    imageUrl: "https://images.unsplash.com/photo-1612212909979-5ae8ae87177e",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-koethen",
+    name: "Landesstudienkolleg Sachsen-Anhalt an der Hochschule Anhalt",
+    description: "Staatliches Uni+FH-Studienkolleg mit T-, W-, G-Kursen und DSH.",
+    location: "Köthen/Dessau",
+    imageUrl: "https://images.unsplash.com/photo-1580060860978-4c6efb9b3742",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-kiel",
+    name: "Studienkolleg an der FH Kiel",
+    description: "Staatliches FH-Studienkolleg mit TI-, SW- und WW-Kursen.",
+    location: "Kiel",
+    imageUrl: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
+    type: "Studienkolleg",
+  },
+  {
+    id: "studienkolleg-nordhausen",
+    name: "Staatliches Studienkolleg",
+    description: "Staatliches Uni+FH-Studienkolleg mit M-, T-, W-, G- und SW-Kursen.",
+    location: "Nordhausen",
+    imageUrl: "https://images.unsplash.com/photo-1576495199011-eb94736d05d6",
     type: "Studienkolleg",
   },
   {
@@ -108,6 +293,10 @@ export interface UniversityDetail extends UniversityProps {
   languageRequirements: string;
   testRequirements: string[];
   semesterAvailability: string[];
+  bundesland?: string;
+  status?: string;
+  kurse?: string;
+  email?: string;
 }
 
 const universityDetails: Record<string, UniversityDetail> = {
@@ -236,13 +425,17 @@ const universityDetails: Record<string, UniversityDetail> = {
       "Passfoto"
     ],
     applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
-    websiteUrl: "https://www.uni-heidelberg.de/de/studium/studienorganisation/studienkolleg",
+    websiteUrl: "https://www.isz.uni-heidelberg.de/d_kurse_sk.html",
     languageRequirements: "B1",
     testRequirements: ["FSP"],
     semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Baden-Württemberg",
+    status: "Uni/staatlich",
+    kurse: "M, T, W, G, S",
+    email: "studienkolleg-info@isz.uni-heidelberg.de"
   },
-  "studienkolleg-munchen": {
-    ...universities.find(u => u.id === "studienkolleg-munchen")!,
+  "studienkolleg-kit": {
+    ...universities.find(u => u.id === "studienkolleg-kit")!,
     requiredDocuments: [
       "Baccalauréat-Zeugnis",
       "Lebenslauf (CV)",
@@ -251,13 +444,73 @@ const universityDetails: Record<string, UniversityDetail> = {
       "Passfoto"
     ],
     applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
-    websiteUrl: "https://www.studienkolleg.mhn.de",
+    websiteUrl: "https://www.stk.kit.edu",
     languageRequirements: "B1",
     testRequirements: ["FSP"],
     semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Baden-Württemberg",
+    status: "Uni/staatlich",
+    kurse: "T",
+    email: "info@stk.kit.edu"
   },
-  "studienkolleg-berlin": {
-    ...universities.find(u => u.id === "studienkolleg-berlin")!,
+  "studienkolleg-konstanz": {
+    ...universities.find(u => u.id === "studienkolleg-konstanz")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://studienkolleg-konstanz.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Baden-Württemberg",
+    status: "FH/staatlich",
+    kurse: "T, W"
+  },
+  "studienkolleg-muenchen": {
+    ...universities.find(u => u.id === "studienkolleg-muenchen")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://studienkolleg-münchen.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Bayern",
+    status: "Uni/staatlich",
+    kurse: "M, T, W, G",
+    email: "leitung@studienkolleg.mhn.de"
+  },
+  "studienkolleg-coburg": {
+    ...universities.find(u => u.id === "studienkolleg-coburg")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "http://www.studienkolleg-coburg.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Bayern",
+    status: "FH/staatlich",
+    kurse: "TI, WW",
+    email: "studienkolleg@hs-coburg.de"
+  },
+  "studienkolleg-tu-berlin": {
+    ...universities.find(u => u.id === "studienkolleg-tu-berlin")!,
     requiredDocuments: [
       "Baccalauréat-Zeugnis",
       "Lebenslauf (CV)",
@@ -267,103 +520,118 @@ const universityDetails: Record<string, UniversityDetail> = {
       "Zulassungsantrag"
     ],
     applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
-    websiteUrl: "https://www.stukolberlin.de",
+    websiteUrl: "https://www.studienkolleg.tu-berlin.de",
     languageRequirements: "B1",
     testRequirements: ["FSP"],
     semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Berlin",
+    status: "Uni/staatlich",
+    kurse: "T, TI, WW, W"
   },
-  "goethe-institut-berlin": {
-    ...universities.find(u => u.id === "goethe-institut-berlin")!,
+  "studienkolleg-fu-berlin": {
+    ...universities.find(u => u.id === "studienkolleg-fu-berlin")!,
     requiredDocuments: [
-      "Anmeldeformular",
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
       "Reisepass",
       "Passfoto",
-      "Bezahlungsnachweis"
+      "Zulassungsantrag"
     ],
-    applicationDeadline: "Kursbeginn mehrmals im Jahr",
-    websiteUrl: "https://www.goethe.de/ins/de/de/ort/ber.html",
-    languageRequirements: "Keine",
-    testRequirements: ["telc", "Goethe-Zertifikat"],
-    semesterAvailability: ["Ganzjährig"],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.fu-berlin.de/studienkolleg",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Berlin",
+    status: "Uni/staatlich",
+    kurse: "T, M, W, G, S",
+    email: "studienkolleg@fu-berlin.de"
   },
-  "goethe-institut-muenchen": {
-    ...universities.find(u => u.id === "goethe-institut-muenchen")!,
+  "studienkolleg-hamburg": {
+    ...universities.find(u => u.id === "studienkolleg-hamburg")!,
     requiredDocuments: [
-      "Anmeldeformular",
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
       "Reisepass",
-      "Passfoto",
-      "Bezahlungsnachweis"
+      "Passfoto"
     ],
-    applicationDeadline: "Kursbeginn mehrmals im Jahr",
-    websiteUrl: "https://www.goethe.de/ins/de/de/ort/mue.html",
-    languageRequirements: "Keine",
-    testRequirements: ["telc", "Goethe-Zertifikat"],
-    semesterAvailability: ["Ganzjährig"],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.studienkolleg-hamburg.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Hamburg",
+    status: "Uni/staatlich",
+    kurse: "M, T, W, G, Sonderlehrgang",
+    email: "studienkolleg@bsb.hamburg.de"
   },
-};
-
-export const getUniversities = (): UniversityProps[] => {
-  return universities;
-};
-
-export const getUniversityById = (id: string): UniversityDetail | undefined => {
-  return universityDetails[id];
-};
-
-export const searchUniversities = (
-  query: string = "",
-  filters: {
-    language?: string[];
-    type?: string[];
-    semester?: string[];
-  } = {}
-): UniversityProps[] => {
-  return universities.filter(university => {
-    // Text search
-    const matchesQuery = query === "" || 
-      university.name.toLowerCase().includes(query.toLowerCase()) ||
-      university.description.toLowerCase().includes(query.toLowerCase()) ||
-      university.location.toLowerCase().includes(query.toLowerCase());
-    
-    if (!matchesQuery) return false;
-    
-    // Type filter
-    const detail = universityDetails[university.id];
-    if (!detail) return false;
-    
-    // Institution type filter
-    if (filters.type && filters.type.length > 0) {
-      const typeMatch = filters.type.some(type => {
-        if (type === "dsh") return university.type === "DSH";
-        if (type === "studienkolleg") return university.type === "Studienkolleg";
-        if (type === "sprachinstitut") return university.type === "Sprachinstitut";
-        return false;
-      });
-      if (!typeMatch) return false;
-    }
-    
-    // Language level filter
-    if (filters.language && filters.language.length > 0) {
-      const languageMatch = filters.language.some(lang => {
-        if (lang === "b1") return detail.languageRequirements.includes("B1") || detail.languageRequirements.includes("Keine");
-        if (lang === "b2plus") return detail.languageRequirements.includes("B2") || detail.languageRequirements.includes("C1");
-        return false;
-      });
-      if (!languageMatch) return false;
-    }
-    
-    // Semester availability filter
-    if (filters.semester && filters.semester.length > 0) {
-      const semesterMatch = filters.semester.some(sem => 
-        detail.semesterAvailability.some(availSem => {
-          if (sem === "summer") return availSem.includes("Sommersemester") || availSem.includes("Ganzjährig");
-          if (sem === "winter") return availSem.includes("Wintersemester") || availSem.includes("Ganzjährig");
-          return false;
-        })
-      );
-      if (!semesterMatch) return false;
-    }
-    
-    return true;
-  });
-};
+  // Continue adding all other studienkollegs with similar pattern
+  "studienkolleg-frankfurt": {
+    ...universities.find(u => u.id === "studienkolleg-frankfurt")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.isz.uni-frankfurt.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Hessen",
+    status: "Uni + FH/staatlich",
+    kurse: "M, T, W, G",
+    email: "studienkolleg@em.uni-frankfurt.de"
+  },
+  "studienkolleg-darmstadt": {
+    ...universities.find(u => u.id === "studienkolleg-darmstadt")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.stk.tu-darmstadt.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Hessen",
+    status: "Uni + FH/staatlich",
+    kurse: "T, G, DSH",
+    email: "kolleg@stk.tu-darmstadt.de"
+  },
+  "studienkolleg-kassel": {
+    ...universities.find(u => u.id === "studienkolleg-kassel")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.uni-kassel.de/einrichtung/studienkolleg",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Hessen",
+    status: "Uni + FH/staatlich",
+    kurse: "T, W",
+    email: "studkoll@uni-kassel.de"
+  },
+  "studienkolleg-marburg": {
+    ...universities.find(u => u.id === "studienkolleg-marburg")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Winter
