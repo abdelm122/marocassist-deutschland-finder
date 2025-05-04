@@ -972,6 +972,8 @@ export const searchUniversities = (
     semester?: string[]
   } = {}
 ): UniversityProps[] => {
+  console.log("Filtering with:", { query, filters });
+  
   return universities.filter((university) => {
     // Filter by search query
     const matchesSearch = query === "" || 
@@ -989,14 +991,22 @@ export const searchUniversities = (
     // Filter by language level
     const matchesLanguage = !filters.language || filters.language.length === 0 ||
       (details && filters.language.some(lang => 
-        details.languageRequirements.includes(lang.toUpperCase())
+        details.languageRequirements && details.languageRequirements.includes(lang.toUpperCase())
       ));
     
     // Filter by semester
     const matchesSemester = !filters.semester || filters.semester.length === 0 ||
       (details && filters.semester.some(sem => 
-        details.semesterAvailability.includes(sem)
+        details.semesterAvailability && details.semesterAvailability.includes(sem)
       ));
+    
+    console.log(`University ${university.name}:`, { 
+      type: university.type,
+      matchesSearch, 
+      matchesType, 
+      matchesLanguage, 
+      matchesSemester 
+    });
     
     return matchesSearch && matchesType && matchesLanguage && matchesSemester;
   });

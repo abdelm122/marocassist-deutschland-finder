@@ -17,13 +17,14 @@ const languageLevels: FilterOption[] = [
 ];
 
 const institutionTypes: FilterOption[] = [
-  { id: "dsh", label: "DSH" },
-  { id: "studienkolleg", label: "Studienkolleg" },
+  { id: "DSH", label: "DSH" },
+  { id: "Studienkolleg", label: "Studienkolleg" },
+  { id: "Sprachinstitut", label: "Sprachinstitut" },
 ];
 
 const semesters: FilterOption[] = [
-  { id: "summer", label: "Sommersemester" },
-  { id: "winter", label: "Wintersemester" },
+  { id: "Sommersemester", label: "Sommersemester" },
+  { id: "Wintersemester", label: "Wintersemester" },
 ];
 
 const SearchForm = () => {
