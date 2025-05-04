@@ -27,11 +27,11 @@ const UniversityCard = ({ university }: { university: UniversityProps }) => {
         </div>
         <div className="flex items-center gap-2">
           {university.deadlineStatus === "open" ? (
-            <span className="flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
+            <span className="flex items-center justify-center w-6 h-6 bg-green-100 rounded-full shrink-0">
               <Check className="h-4 w-4 text-green-600" />
             </span>
           ) : university.deadlineStatus === "closed" ? (
-            <span className="flex items-center justify-center w-6 h-6 bg-red-100 rounded-full">
+            <span className="flex items-center justify-center w-6 h-6 bg-red-100 rounded-full shrink-0">
               <X className="h-4 w-4 text-red-600" />
             </span>
           ) : null}
