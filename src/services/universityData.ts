@@ -634,4 +634,331 @@ const universityDetails: Record<string, UniversityDetail> = {
       "Reisepass",
       "Passfoto"
     ],
-    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Winter
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.uni-marburg.de/studienkolleg",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Hessen",
+    status: "Uni + FH/staatlich",
+    kurse: "M, T, W, G",
+    email: "studienkolleg@uni-marburg.de"
+  },
+  "studienkolleg-wismar": {
+    ...universities.find(u => u.id === "studienkolleg-wismar")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.hs-wismar.de/international/aus-dem-ausland/studienkolleg/",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Mecklenburg-Vorpommern",
+    status: "Uni/staatlich",
+    kurse: "TI, W, WW",
+    email: "kathy.gordon@hs-wismar.de"
+  },
+  "studienkolleg-hannover": {
+    ...universities.find(u => u.id === "studienkolleg-hannover")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.stk.uni-hannover.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Niedersachsen",
+    status: "Uni/staatlich",
+    kurse: "G, M, T, W",
+    email: "sekretariat@stk.uni-hannover.de"
+  },
+  "studienkolleg-bochum": {
+    ...universities.find(u => u.id === "studienkolleg-bochum")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.studienkolleg-bochum.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Nordrhein-Westfalen",
+    status: "staatlich genehmigt",
+    kurse: "T",
+    email: "info@studienkolleg-bochum.de"
+  },
+  "studienkolleg-mettingen": {
+    ...universities.find(u => u.id === "studienkolleg-mettingen")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.studienkolleg-mettingen.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Nordrhein-Westfalen",
+    status: "staatlich anerkannt",
+    kurse: "T, W, G, M",
+    email: "studienkolleg@comeniuskolleg.de"
+  },
+  "studienkolleg-mainz": {
+    ...universities.find(u => u.id === "studienkolleg-mainz")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.uni-mainz.de/studienkolleg",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Rheinland-Pfalz",
+    status: "Uni/staatlich",
+    kurse: "M, T, W, G, S",
+    email: "studienkolleg@uni-mainz.de"
+  },
+  "studienkolleg-kaiserslautern": {
+    ...universities.find(u => u.id === "studienkolleg-kaiserslautern")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.hs-kl.de/internationales-studienkolleg",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Rheinland-Pfalz",
+    status: "FH/Uni/staatlich",
+    kurse: "TI/T, WW/W",
+    email: "studienkolleg@hs-kl.de"
+  },
+  "studienkolleg-dresden": {
+    ...universities.find(u => u.id === "studienkolleg-dresden")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.tudias.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Sachsen",
+    status: "staatlich anerkannt",
+    kurse: "M, T, W",
+    email: "andrea.struetzel@tudias.de"
+  },
+  "studienkolleg-glauchau": {
+    ...universities.find(u => u.id === "studienkolleg-glauchau")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.studiencolleg-glauchau.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Sachsen",
+    status: "staatlich anerkannt",
+    kurse: "T, TI, W, WW, DSH",
+    email: "sbg@studienkolleg-glauchau.de"
+  },
+  "studienkolleg-leipzig": {
+    ...universities.find(u => u.id === "studienkolleg-leipzig")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.uni-leipzig.de/stksachs",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Sachsen",
+    status: "Uni/staatlich",
+    kurse: "M, T, W, G, S",
+    email: "stksachs@rz.uni-leipzig.de"
+  },
+  "studienkolleg-zittau": {
+    ...universities.find(u => u.id === "studienkolleg-zittau")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.studienkolleg.hszg.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Sachsen",
+    status: "FH/staatlich",
+    kurse: "TI, WW",
+    email: "studienkolleg@hszg.de"
+  },
+  "studienkolleg-halle": {
+    ...universities.find(u => u.id === "studienkolleg-halle")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.studienkolleg.uni-halle.de",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Sachsen-Anhalt",
+    status: "Uni/staatlich",
+    kurse: "M, T, W, G, S, DSH",
+    email: "international.students@uni-halle.de"
+  },
+  "studienkolleg-koethen": {
+    ...universities.find(u => u.id === "studienkolleg-koethen")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.hs-anhalt.de/studienkolleg",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Sachsen-Anhalt",
+    status: "Uni+FH/staatlich",
+    kurse: "T, W, G, DSH",
+    email: "sekretariat.stk@hs-anhalt.de"
+  },
+  "studienkolleg-kiel": {
+    ...universities.find(u => u.id === "studienkolleg-kiel")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.fh-kiel.de/studium/studieninteressierte/studienkolleg/",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Schleswig-Holstein",
+    status: "FH/staatlich",
+    kurse: "TI, SW, WW",
+    email: "studienkolleg@fh-kiel.de"
+  },
+  "studienkolleg-nordhausen": {
+    ...universities.find(u => u.id === "studienkolleg-nordhausen")!,
+    requiredDocuments: [
+      "Baccalauréat-Zeugnis",
+      "Lebenslauf (CV)",
+      "Sprachnachweis (B1 Deutsch)",
+      "Reisepass",
+      "Passfoto"
+    ],
+    applicationDeadline: "15. Januar (Sommersemester) / 15. Juli (Wintersemester)",
+    websiteUrl: "https://www.hs-nordhausen.de/international/staatliches-studienkolleg/",
+    languageRequirements: "B1",
+    testRequirements: ["FSP"],
+    semesterAvailability: ["Sommersemester", "Wintersemester"],
+    bundesland: "Thüringen",
+    status: "Uni + FH/staatlich",
+    kurse: "M, T, W, G, SW",
+    email: "ines.guenther@hs-nordhausen.de"
+  },
+  "goethe-institut-berlin": {
+    ...universities.find(u => u.id === "goethe-institut-berlin")!,
+    requiredDocuments: [
+      "Reisepass",
+      "Passfoto",
+      "Anmeldeformular"
+    ],
+    applicationDeadline: "Fortlaufend",
+    websiteUrl: "https://www.goethe.de/ins/de/de/ort/ber.html",
+    languageRequirements: "Keine",
+    testRequirements: ["TestDaF", "DSH", "Goethe-Zertifikat"],
+    semesterAvailability: ["Ganzjährig"],
+  },
+  "goethe-institut-muenchen": {
+    ...universities.find(u => u.id === "goethe-institut-muenchen")!,
+    requiredDocuments: [
+      "Reisepass",
+      "Passfoto",
+      "Anmeldeformular"
+    ],
+    applicationDeadline: "Fortlaufend",
+    websiteUrl: "https://www.goethe.de/ins/de/de/ort/mue.html",
+    languageRequirements: "Keine",
+    testRequirements: ["TestDaF", "DSH", "Goethe-Zertifikat"],
+    semesterAvailability: ["Ganzjährig"],
+  }
+};
+
+// Export functions to access data
+export const getAllUniversities = () => universities;
+
+export const getUniversityById = (id: string): UniversityDetail | null => {
+  return universityDetails[id] || null;
+};
+
+export const getFilteredUniversities = (
+  searchQuery: string = "", 
+  types: string[] = []
+): UniversityProps[] => {
+  return universities.filter((university) => {
+    // Filter by search query
+    const matchesSearch = searchQuery === "" || 
+      university.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      university.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      university.location.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    // Filter by types (if any are selected)
+    const matchesType = types.length === 0 || types.includes(university.type);
+    
+    return matchesSearch && matchesType;
+  });
+};
