@@ -2,6 +2,15 @@ import { UniversityProps } from "@/components/UniversityCard";
 
 // Sample university data - only keeping Studienkollegs and Sprachinstitute
 const universities: UniversityProps[] = [
+  // New Studienkollegs requested by user
+  {
+    id: "studienkolleg-jena",
+    name: "STK Jena",
+    description: "Studienkolleg an der Friedrich-Schiller-Universität Jena mit T, W und M Kursen.",
+    location: "Jena",
+    imageUrl: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
+    type: "Studienkolleg",
+  },
   // Studienkollegs
   {
     id: "studienkolleg-bochum",
@@ -239,6 +248,21 @@ export interface UniversityDetail extends UniversityProps {
 }
 
 const universityDetails: Record<string, UniversityDetail> = {
+  // Add new Studienkolleg details
+  "studienkolleg-jena": {
+    ...universities.find(u => u.id === "studienkolleg-jena")!,
+    requiredDocuments: ["BAC", "Relevé de Notes", "Lebenslauf", "Sprachnachweis B1", "Passbild"],
+    applicationDeadline: "15.06.2025",
+    websiteUrl: "https://www.uni-jena.de/studienkolleg",
+    languageRequirements: "B1",
+    testRequirements: ["Aufnahmetest", "FSP"],
+    semesterAvailability: ["Wintersemester"],
+    kurse: "T, W, M",
+    email: "studienkolleg@uni-jena.de",
+    applicationTestDate: "August 2025",
+    applicationMethod: "Uni-Assist",
+    address: "Ernst-Abbe-Platz 8, 07743 Jena"
+  },
   // Studienkollegs with the provided information
   "studienkolleg-bochum": {
     ...universities.find(u => u.id === "studienkolleg-bochum")!,
