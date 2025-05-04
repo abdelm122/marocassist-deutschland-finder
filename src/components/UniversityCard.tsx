@@ -2,15 +2,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-
-export interface UniversityProps {
-  id: string;
-  name: string;
-  description: string;
-  location: string;
-  imageUrl: string;
-  type: string;
-}
+import { UniversityProps } from "@/types/universityTypes";
 
 const UniversityCard = ({ university }: { university: UniversityProps }) => {
   return (
