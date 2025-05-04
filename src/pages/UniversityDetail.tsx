@@ -96,6 +96,11 @@ const UniversityDetailPage = () => {
                     </svg>
                     {university.location}
                   </div>
+                  {university.address && (
+                    <div className="text-sm text-gray-600 mt-1">
+                      {university.address}
+                    </div>
+                  )}
                 </div>
                 
                 <Button size="lg" asChild>
@@ -148,6 +153,40 @@ const UniversityDetailPage = () => {
                   ))}
                 </div>
               </Card>
+              
+              {/* Bewerbungsmethode */}
+              {university.applicationMethod && (
+                <Card className="p-6">
+                  <h2 className="text-xl font-semibold mb-4">Bewerbungsmethode</h2>
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="h-10 w-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect width="20" height="14" x="2" y="5" rx="2" />
+                        <line x1="2" x2="22" y1="10" y2="10" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium">{university.applicationMethod}</div>
+                      <p className="text-sm text-gray-600">
+                        {university.applicationMethod.includes("Direkt") 
+                          ? "Bewerbung direkt an der Hochschule" 
+                          : university.applicationMethod.includes("Uni-Assist") 
+                            ? "Bewerbung über uni-assist.de" 
+                            : "Bewerbung über spezielle Verfahren"}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {university.applicationTestDate && (
+                    <div className="mt-4">
+                      <h3 className="font-medium mb-2">Aufnahmetestdatum:</h3>
+                      <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+                        <p className="text-amber-800">{university.applicationTestDate}</p>
+                      </div>
+                    </div>
+                  )}
+                </Card>
+              )}
               
               {/* Studienkolleg specific information */}
               {isStudienkolleg && university.kurse && (
