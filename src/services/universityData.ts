@@ -1,3 +1,4 @@
+
 import { UniversityProps } from "@/components/UniversityCard";
 
 // Sample university data
@@ -384,6 +385,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-hamburg": {
     ...universities.find(u => u.id === "studienkolleg-hamburg")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "01.03.2025",
     websiteUrl: "https://www.studienkolleg-hamburg.de",
     languageRequirements: "B2",
@@ -396,6 +398,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-hannover": {
     ...universities.find(u => u.id === "studienkolleg-hannover")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "15.07.2025",
     websiteUrl: "https://www.stk.uni-hannover.de",
     languageRequirements: "TELC/Goethe B2",
@@ -409,7 +412,9 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-hannover-mhh": {
     ...universities.find(u => u.id === "studienkolleg-hannover-mhh")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "15.07.2025",
+    websiteUrl: "https://www.mhh.de",
     languageRequirements: "B2",
     testRequirements: ["FSP"],
     semesterAvailability: ["Wintersemester"],
@@ -418,6 +423,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-heidelberg": {
     ...universities.find(u => u.id === "studienkolleg-heidelberg")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "15.07.2025",
     websiteUrl: "https://www.isz.uni-heidelberg.de/d_kurse_sk.html",
     languageRequirements: "B2",
@@ -431,6 +437,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-kaiserslautern": {
     ...universities.find(u => u.id === "studienkolleg-kaiserslautern")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "21.03.2025",
     websiteUrl: "https://www.hs-kl.de/internationales-studienkolleg",
     languageRequirements: "B2",
@@ -444,6 +451,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-konstanz": {
     ...universities.find(u => u.id === "studienkolleg-konstanz")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "01.05.2025",
     websiteUrl: "https://www.htwg-konstanz.de/studienkolleg",
     languageRequirements: "B1",
@@ -457,6 +465,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-wismar": {
     ...universities.find(u => u.id === "studienkolleg-wismar")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "30.06.2025",
     websiteUrl: "https://www.hs-wismar.de/international/aus-dem-ausland/studienkolleg/",
     languageRequirements: "B2",
@@ -469,6 +478,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-tu-berlin": {
     ...universities.find(u => u.id === "studienkolleg-tu-berlin")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "30.06.2025",
     websiteUrl: "https://www.htw-berlin.de/studium/bewerbung/internationales-studienkolleg/",
     languageRequirements: "B2",
@@ -482,6 +492,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-kit": {
     ...universities.find(u => u.id === "studienkolleg-kit")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "15.07.2025",
     websiteUrl: "https://www.stk.kit.edu",
     languageRequirements: "B1",
@@ -495,6 +506,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-kassel": {
     ...universities.find(u => u.id === "studienkolleg-kassel")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "30.04.2025",
     websiteUrl: "https://www.uni-kassel.de/einrichtung/studienkolleg",
     languageRequirements: "TELC/Goethe B1",
@@ -508,6 +520,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-koethen": {
     ...universities.find(u => u.id === "studienkolleg-koethen")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "15.06.2025",
     websiteUrl: "https://www.hs-anhalt.de/studienkolleg",
     languageRequirements: "B1",
@@ -518,6 +531,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-leipzig": {
     ...universities.find(u => u.id === "studienkolleg-leipzig")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "15.06.2025",
     websiteUrl: "https://www.uni-leipzig.de/stksachs",
     languageRequirements: "B1",
@@ -531,6 +545,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-mettingen": {
     ...universities.find(u => u.id === "studienkolleg-mettingen")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "15.06.2025",
     websiteUrl: "https://www.studienkolleg-mettingen.de",
     languageRequirements: "B2",
@@ -543,6 +558,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-marburg": {
     ...universities.find(u => u.id === "studienkolleg-marburg")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "13.05.2025",
     websiteUrl: "https://www.uni-marburg.de/studienkolleg",
     languageRequirements: "B2",
@@ -556,6 +572,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-muenchen": {
     ...universities.find(u => u.id === "studienkolleg-muenchen")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "15.04.2025",
     websiteUrl: "https://www.studienkolleg-münchen.de",
     languageRequirements: "B2",
@@ -569,6 +586,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-nordhausen": {
     ...universities.find(u => u.id === "studienkolleg-nordhausen")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "15.07.2025",
     websiteUrl: "https://www.hs-nordhausen.de/international/staatliches-studienkolleg/",
     languageRequirements: "B2",
@@ -582,6 +600,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-tu-berlin-uni": {
     ...universities.find(u => u.id === "studienkolleg-tu-berlin-uni")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "30.06.2025",
     websiteUrl: "https://www.studienkolleg.tu-berlin.de",
     languageRequirements: "B2",
@@ -595,6 +614,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-halle": {
     ...universities.find(u => u.id === "studienkolleg-halle")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "30.06.2025",
     websiteUrl: "https://www.studienkolleg.uni-halle.de",
     languageRequirements: "B2",
@@ -606,6 +626,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-mainz": {
     ...universities.find(u => u.id === "studienkolleg-mainz")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
     applicationDeadline: "30.06.2025",
     websiteUrl: "https://www.uni-mainz.de/studienkolleg",
     languageRequirements: "B2",
