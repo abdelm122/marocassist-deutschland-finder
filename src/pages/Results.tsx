@@ -1,0 +1,83 @@
+
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { searchUniversities } from "@/services/universityData";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import UniversityCard, { UniversityProps } from "@/components/UniversityCard";
+import SearchForm from "@/components/SearchForm";
+import { Button } from "@/components/ui/button";
+
+const Results = () => {
+  const [searchParams] = useSearchParams();
+  const [universities, setUniversities] = useState<UniversityProps[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
+  
+  useEffect(() => {
+    const query = searchParams.get("query") || "";
+    const language = searchParams.get("language")?.split(",") || [];
+    const type = searchParams.get("type")?.split(",") || [];
+    const tests = searchParams.get("tests")?.split(",") || [];
+    const semester = searchParams.get("semester")?.split(",") || [];
+    
+    const results = searchUniversities(query, { language, type, tests, semester });
+    setUniversities(results);
+  }, [searchParams]);
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      
+      <main className="flex-grow">
+        <div className="container mx-auto px-4 py-10">
+          {/* Search heading */}
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold mb-2">Suchergebnisse</h1>
+            <p className="text-gray-600">
+              {universities.length} {universities.length === 1 ? "Ergebnis" : "Ergebnisse"} gefunden
+            </p>
+          </div>
+          
+          {/* Mobile toggle for filters */}
+          <div className="md:hidden mb-6">
+            <Button 
+              variant="outline" 
+              onClick={() => setShowFilters(!showFilters)}
+              className="w-full"
+            >
+              {showFilters ? "Filter ausblenden" : "Filter anzeigen"}
+            </Button>
+          </div>
+          
+          {/* Search form (hidden on mobile by default) */}
+          <div className={`${showFilters ? "block" : "hidden"} md:block mb-10`}>
+            <SearchForm />
+          </div>
+          
+          {/* Results */}
+          {universities.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {universities.map((university) => (
+                <UniversityCard key={university.id} university={university} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <h2 className="text-2xl font-semibold mb-4">Keine Ergebnisse gefunden</h2>
+              <p className="text-gray-600 mb-8">
+                Bitte versuchen Sie andere Suchkriterien oder wenden Sie sich an uns für weitere Unterstützung.
+              </p>
+              <Button onClick={() => window.history.back()}>
+                Zurück zur Suche
+              </Button>
+            </div>
+          )}
+        </div>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default Results;
