@@ -962,3 +962,42 @@ export const getFilteredUniversities = (
     return matchesSearch && matchesType;
   });
 };
+
+// Add the searchUniversities function that was missing
+export const searchUniversities = (
+  query: string = "", 
+  filters: {
+    language?: string[],
+    type?: string[],
+    semester?: string[]
+  } = {}
+): UniversityProps[] => {
+  return universities.filter((university) => {
+    // Filter by search query
+    const matchesSearch = query === "" || 
+      university.name.toLowerCase().includes(query.toLowerCase()) || 
+      university.description.toLowerCase().includes(query.toLowerCase()) ||
+      university.location.toLowerCase().includes(query.toLowerCase());
+    
+    // Filter by types (if any are selected)
+    const matchesType = !filters.type || filters.type.length === 0 || 
+      filters.type.includes(university.type);
+    
+    // For language and semester, we need to check the universityDetails
+    const details = universityDetails[university.id];
+    
+    // Filter by language level
+    const matchesLanguage = !filters.language || filters.language.length === 0 ||
+      (details && filters.language.some(lang => 
+        details.languageRequirements.includes(lang.toUpperCase())
+      ));
+    
+    // Filter by semester
+    const matchesSemester = !filters.semester || filters.semester.length === 0 ||
+      (details && filters.semester.some(sem => 
+        details.semesterAvailability.includes(sem)
+      ));
+    
+    return matchesSearch && matchesType && matchesLanguage && matchesSemester;
+  });
+};
