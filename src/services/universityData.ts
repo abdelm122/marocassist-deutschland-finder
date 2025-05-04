@@ -108,5 +108,5 @@ export const checkDeadlineStatus = (universityId: string): "open" | "closed" => 
   return today <= deadlineDate ? "open" : "closed";
 };
 
-// Re-export types for easier imports elsewhere
-export { UniversityProps, UniversityDetail } from "../types/universityTypes";
+// Re-export types for easier imports elsewhere - Fix with 'export type'
+export type { UniversityProps, UniversityDetail } from "../types/universityTypes";

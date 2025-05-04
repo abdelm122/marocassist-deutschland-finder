@@ -4,7 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import { searchUniversities } from "@/services/universityData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import UniversityCard, { UniversityProps } from "@/components/UniversityCard";
+import UniversityCard from "@/components/UniversityCard";
+import { UniversityProps } from "@/types/universityTypes";
 import SearchForm from "@/components/SearchForm";
 import { Button } from "@/components/ui/button";
 
