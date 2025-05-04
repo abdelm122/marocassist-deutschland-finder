@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Check, X } from "lucide-react";
 
 export interface UniversityProps {
   id: string;
@@ -11,7 +10,6 @@ export interface UniversityProps {
   location: string;
   imageUrl: string;
   type: string;
-  deadlineStatus?: "open" | "closed";
 }
 
 const UniversityCard = ({ university }: { university: UniversityProps }) => {
@@ -26,15 +24,6 @@ const UniversityCard = ({ university }: { university: UniversityProps }) => {
           />
         </div>
         <div className="flex items-center gap-2">
-          {university.deadlineStatus === "open" ? (
-            <span className="flex items-center justify-center w-6 h-6 bg-green-100 rounded-full shrink-0">
-              <Check className="h-4 w-4 text-green-600" />
-            </span>
-          ) : university.deadlineStatus === "closed" ? (
-            <span className="flex items-center justify-center w-6 h-6 bg-red-100 rounded-full shrink-0">
-              <X className="h-4 w-4 text-red-600" />
-            </span>
-          ) : null}
           <h3 className="text-xl font-semibold">{university.name}</h3>
         </div>
         <div className="text-sm text-muted-foreground flex items-center gap-1">

@@ -1,65 +1,8 @@
-
 import { UniversityProps } from "@/components/UniversityCard";
 
-// Sample university data
+// Sample university data - only keeping Studienkollegs and Sprachinstitute
 const universities: UniversityProps[] = [
-  {
-    id: "tu-berlin",
-    name: "Technische Universität Berlin",
-    description: "Eine der größten technischen Universitäten Deutschlands mit einem starken Fokus auf Ingenieurwissenschaften und Informatik.",
-    location: "Berlin",
-    imageUrl: "https://images.unsplash.com/photo-1483058712412-4245e9b90334",
-    type: "DSH",
-  },
-  {
-    id: "fu-berlin",
-    name: "Freie Universität Berlin",
-    description: "Eine forschungsorientierte Universität mit einem breiten Spektrum an Fächern in den Geistes-, Sozial- und Naturwissenschaften.",
-    location: "Berlin",
-    imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-    type: "DSH",
-  },
-  {
-    id: "uni-hamburg",
-    name: "Universität Hamburg",
-    description: "Eine der größten Universitäten Deutschlands mit einem umfangreichen Angebot an Studienfächern.",
-    location: "Hamburg",
-    imageUrl: "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e",
-    type: "DSH",
-  },
-  {
-    id: "rwth-aachen",
-    name: "RWTH Aachen",
-    description: "Eine der führenden technischen Universitäten Europas mit Schwerpunkt auf Ingenieurwissenschaften und Technologie.",
-    location: "Aachen",
-    imageUrl: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-    type: "DSH",
-  },
-  {
-    id: "lmu-muenchen",
-    name: "Ludwig-Maximilians-Universität München",
-    description: "Eine der renommiertesten Universitäten Europas mit einem breiten Fächerangebot und exzellenter Forschung.",
-    location: "München",
-    imageUrl: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
-    type: "DSH",
-  },
-  {
-    id: "uni-heidelberg",
-    name: "Ruprecht-Karls-Universität Heidelberg",
-    description: "Die älteste Universität Deutschlands mit einer starken internationalen Ausrichtung und hervorragenden Forschungsbedingungen.",
-    location: "Heidelberg",
-    imageUrl: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1",
-    type: "DSH",
-  },
-  {
-    id: "uni-frankfurt",
-    name: "Goethe-Universität Frankfurt",
-    description: "Eine forschungsstarke Universität mit einem breiten Fächerspektrum im Herzen von Frankfurt am Main.",
-    location: "Frankfurt",
-    imageUrl: "https://images.unsplash.com/photo-1551269901-5c5e14c25df7",
-    type: "DSH",
-  },
-  // Studienkollegs from the table data
+  // Studienkollegs
   {
     id: "studienkolleg-bochum",
     name: "STK Bochum",
@@ -296,12 +239,10 @@ export interface UniversityDetail extends UniversityProps {
 }
 
 const universityDetails: Record<string, UniversityDetail> = {
-  // ... keep existing code (universities) the same ...
-
-  // Updated studienkollegs with the provided information
+  // Studienkollegs with the provided information
   "studienkolleg-bochum": {
     ...universities.find(u => u.id === "studienkolleg-bochum")!,
-    requiredDocuments: ["BAC"],
+    requiredDocuments: ["BAC", "Bewerbungsunterlagen"],
     applicationDeadline: "15.05.2025",
     websiteUrl: "https://www.studienkolleg-bochum.de",
     languageRequirements: "B2",
@@ -315,7 +256,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-darmstadt": {
     ...universities.find(u => u.id === "studienkolleg-darmstadt")!,
-    requiredDocuments: ["relevez de note"],
+    requiredDocuments: ["relevez de note", "Bewerbungsunterlagen"],
     applicationDeadline: "15.04.2025",
     websiteUrl: "https://www.stk.tu-darmstadt.de",
     languageRequirements: "B1",
@@ -329,7 +270,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-coburg": {
     ...universities.find(u => u.id === "studienkolleg-coburg")!,
-    requiredDocuments: ["lebenslauf"],
+    requiredDocuments: ["lebenslauf", "Bewerbungsunterlagen"],
     applicationDeadline: "15.07.2025",
     websiteUrl: "http://www.studienkolleg-coburg.de",
     languageRequirements: "B2",
@@ -343,7 +284,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-kiel": {
     ...universities.find(u => u.id === "studienkolleg-kiel")!,
-    requiredDocuments: ["Passbild"],
+    requiredDocuments: ["Passbild", "Bewerbungsunterlagen"],
     applicationDeadline: "31.03.2025",
     websiteUrl: "https://www.fh-kiel.de/studium/studieninteressierte/studienkolleg/",
     languageRequirements: "B1",
@@ -357,7 +298,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-frankfurt-fuas": {
     ...universities.find(u => u.id === "studienkolleg-frankfurt-fuas")!,
-    requiredDocuments: ["Antrag"],
+    requiredDocuments: ["Antrag", "Bewerbungsunterlagen"],
     applicationDeadline: "01.05.2025",
     websiteUrl: "https://www.frankfurt-university.de/international",
     languageRequirements: "B2",
@@ -371,7 +312,7 @@ const universityDetails: Record<string, UniversityDetail> = {
   },
   "studienkolleg-frankfurt": {
     ...universities.find(u => u.id === "studienkolleg-frankfurt")!,
-    requiredDocuments: ["B2 oder B2"],
+    requiredDocuments: ["B2 oder B2", "Bewerbungsunterlagen"],
     applicationDeadline: "01.05.2025",
     websiteUrl: "https://www.isz.uni-frankfurt.de",
     languageRequirements: "B2",
@@ -636,7 +577,28 @@ const universityDetails: Record<string, UniversityDetail> = {
     applicationTestDate: "11.08.2025",
     address: "Johannes-von-Müller-Weg 1, 55128 Mainz"
   },
-  // ... keep existing code (other universities) the same ...
+  "goethe-institut-berlin": {
+    ...universities.find(u => u.id === "goethe-institut-berlin")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
+    applicationDeadline: "offen",
+    websiteUrl: "https://www.goethe.de/berlin",
+    languageRequirements: "Alle Niveaus",
+    testRequirements: ["TestDaF", "Goethe-Zertifikat"],
+    semesterAvailability: ["Ganzjährig"],
+    email: "berlin@goethe.de",
+    address: "Neue Schönhauser Str. 20, 10178 Berlin"
+  },
+  "goethe-institut-muenchen": {
+    ...universities.find(u => u.id === "goethe-institut-muenchen")!,
+    requiredDocuments: ["Bewerbungsunterlagen"],
+    applicationDeadline: "offen",
+    websiteUrl: "https://www.goethe.de/muenchen",
+    languageRequirements: "Alle Niveaus",
+    testRequirements: ["TestDaF", "Goethe-Zertifikat"],
+    semesterAvailability: ["Ganzjährig"],
+    email: "muenchen@goethe.de",
+    address: "Sonnenstraße 25, 80331 München"
+  },
 };
 
 // Export functions to access data
