@@ -17,14 +17,8 @@ const languageLevels: FilterOption[] = [
 ];
 
 const institutionTypes: FilterOption[] = [
-  { id: "university", label: "Universität" },
-  { id: "studienkolleg", label: "Studienkolleg" },
-];
-
-const requiredTests: FilterOption[] = [
   { id: "dsh", label: "DSH" },
-  { id: "testDaf", label: "TestDaF" },
-  { id: "fsp", label: "FSP" },
+  { id: "studienkolleg", label: "Studienkolleg" },
 ];
 
 const semesters: FilterOption[] = [
@@ -37,7 +31,6 @@ const SearchForm = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLanguageLevels, setSelectedLanguageLevels] = useState<string[]>([]);
   const [selectedInstitutionTypes, setSelectedInstitutionTypes] = useState<string[]>([]);
-  const [selectedTests, setSelectedTests] = useState<string[]>([]);
   const [selectedSemesters, setSelectedSemesters] = useState<string[]>([]);
 
   const handleCheckboxChange = (
@@ -69,10 +62,6 @@ const SearchForm = () => {
       params.set("type", selectedInstitutionTypes.join(","));
     }
     
-    if (selectedTests.length) {
-      params.set("tests", selectedTests.join(","));
-    }
-    
     if (selectedSemesters.length) {
       params.set("semester", selectedSemesters.join(","));
     }
@@ -92,7 +81,7 @@ const SearchForm = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Language Level */}
         <div>
           <h3 className="text-lg font-medium mb-2">Sprachniveau</h3>
@@ -130,27 +119,6 @@ const SearchForm = () => {
                   )}
                 />
                 <Label htmlFor={`type-${type.id}`}>{type.label}</Label>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Required Tests */}
-        <div>
-          <h3 className="text-lg font-medium mb-2">Prüfungen</h3>
-          <div className="space-y-2">
-            {requiredTests.map((test) => (
-              <div key={test.id} className="flex items-center gap-2">
-                <Checkbox 
-                  id={`test-${test.id}`} 
-                  checked={selectedTests.includes(test.id)}
-                  onCheckedChange={() => handleCheckboxChange(
-                    test.id, 
-                    selectedTests, 
-                    setSelectedTests
-                  )}
-                />
-                <Label htmlFor={`test-${test.id}`}>{test.label}</Label>
               </div>
             ))}
           </div>

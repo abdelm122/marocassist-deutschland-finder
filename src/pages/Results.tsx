@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { searchUniversities } from "@/services/universityData";
@@ -17,10 +16,9 @@ const Results = () => {
     const query = searchParams.get("query") || "";
     const language = searchParams.get("language")?.split(",") || [];
     const type = searchParams.get("type")?.split(",") || [];
-    const tests = searchParams.get("tests")?.split(",") || [];
     const semester = searchParams.get("semester")?.split(",") || [];
     
-    const results = searchUniversities(query, { language, type, tests, semester });
+    const results = searchUniversities(query, { language, type, semester });
     setUniversities(results);
   }, [searchParams]);
 

@@ -1,4 +1,3 @@
-
 import { UniversityProps } from "@/components/UniversityCard";
 
 // Sample university data
@@ -316,7 +315,6 @@ export const searchUniversities = (
   filters: {
     language?: string[];
     type?: string[];
-    tests?: string[];
     semester?: string[];
   } = {}
 ): UniversityProps[] => {
@@ -336,7 +334,7 @@ export const searchUniversities = (
     // Institution type filter
     if (filters.type && filters.type.length > 0) {
       const typeMatch = filters.type.some(type => {
-        if (type === "university") return university.type === "Universität";
+        if (type === "dsh") return university.type === "DSH";
         if (type === "studienkolleg") return university.type === "Studienkolleg";
         if (type === "sprachinstitut") return university.type === "Sprachinstitut";
         return false;
@@ -352,21 +350,6 @@ export const searchUniversities = (
         return false;
       });
       if (!languageMatch) return false;
-    }
-    
-    // Test requirements filter
-    if (filters.tests && filters.tests.length > 0) {
-      const testMatch = filters.tests.some(test => 
-        detail.testRequirements.some(reqTest => {
-          if (test === "dsh") return reqTest.includes("DSH");
-          if (test === "testDaf") return reqTest.includes("TestDaF");
-          if (test === "fsp") return reqTest.includes("FSP");
-          if (test === "telc") return reqTest.includes("telc");
-          if (test === "goethe") return reqTest.includes("Goethe-Zertifikat");
-          return false;
-        })
-      );
-      if (!testMatch) return false;
     }
     
     // Semester availability filter
