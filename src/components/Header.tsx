@@ -14,25 +14,17 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="relative w-10 h-10 flex">
-              <div className="absolute inset-0 flex">
-                <div className="w-1/2 h-full bg-morocco-red"></div>
-                <div className="w-1/2 h-full bg-morocco-green"></div>
-              </div>
+            <div className="relative w-16 h-16 flex items-center justify-center bg-white rounded-full shadow-md">
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-4 h-4 transform rotate-45 text-morocco-green">
-                  ★
-                </div>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                  <path d="M22 20V8M2 20V8M12 4v16M2 8s9-4 20 0M2 12s9-4 20 0M2 16s9-4 20 0M2 20s9-4 20 0"></path>
+                </svg>
               </div>
             </div>
-            <div className="relative w-10 h-10 flex">
-              <div className="absolute inset-0 flex flex-col">
-                <div className="w-full h-1/3 bg-germany-black"></div>
-                <div className="w-full h-1/3 bg-germany-red"></div>
-                <div className="w-full h-1/3 bg-germany-gold"></div>
-              </div>
+            <div className="flex flex-col text-left">
+              <span className="text-xl font-bold">MAROCASSIST</span>
+              <span className="text-xs text-muted-foreground">Studieren in Deutschland</span>
             </div>
-            <span className="text-xl font-bold">MAROCASSIST</span>
           </Link>
 
           {/* Toggle button for mobile */}

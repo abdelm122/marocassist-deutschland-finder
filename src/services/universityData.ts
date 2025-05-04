@@ -981,11 +981,11 @@ export const searchUniversities = (
       university.description.toLowerCase().includes(query.toLowerCase()) ||
       university.location.toLowerCase().includes(query.toLowerCase());
     
-    // Filter by types (if any are selected)
+    // Filter by university type
     const matchesType = !filters.type || filters.type.length === 0 || 
       filters.type.includes(university.type);
     
-    // For language and semester, we need to check the universityDetails
+    // Get university details for additional filtering
     const details = universityDetails[university.id];
     
     // Filter by language level
@@ -994,20 +994,48 @@ export const searchUniversities = (
         details.languageRequirements && details.languageRequirements.includes(lang.toUpperCase())
       ));
     
-    // Filter by semester
-    const matchesSemester = !filters.semester || filters.semester.length === 0 ||
-      (details && filters.semester.some(sem => 
-        details.semesterAvailability && details.semesterAvailability.includes(sem)
-      ));
-    
     console.log(`University ${university.name}:`, { 
       type: university.type,
       matchesSearch, 
       matchesType, 
-      matchesLanguage, 
-      matchesSemester 
+      matchesLanguage
     });
     
-    return matchesSearch && matchesType && matchesLanguage && matchesSemester;
+    return matchesSearch && matchesType && matchesLanguage;
   });
+};
+
+// Function to check if application deadline is still open
+export const checkDeadlineStatus = (universityId: string): "open" | "closed" => {
+  const details = universityDetails[universityId];
+  
+  if (!details || !details.applicationDeadline) {
+    return "closed"; // Default to closed if no deadline info
+  }
+  
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-indexed
+  
+  // Simple deadline check based on current month
+  // For Sommersemester (deadline typically January 15)
+  if (details.applicationDeadline.includes("15. Januar") && currentMonth < 1) {
+    return "open";
+  }
+  
+  // For Wintersemester (deadline typically July 15)
+  if (details.applicationDeadline.includes("15. Juli") && currentMonth < 7) {
+    return "open";
+  }
+  
+  // Between January and July, summer semester is closed but winter is open
+  if (currentMonth >= 1 && currentMonth < 7 && details.applicationDeadline.includes("15. Juli")) {
+    return "open";
+  }
+  
+  // Between July and December, winter semester is closed but summer is open
+  if (currentMonth >= 7 && currentMonth <= 12 && details.applicationDeadline.includes("15. Januar")) {
+    return "open";
+  }
+  
+  return "closed";
 };

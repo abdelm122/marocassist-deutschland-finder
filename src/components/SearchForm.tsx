@@ -22,17 +22,11 @@ const institutionTypes: FilterOption[] = [
   { id: "Sprachinstitut", label: "Sprachinstitut" },
 ];
 
-const semesters: FilterOption[] = [
-  { id: "Sommersemester", label: "Sommersemester" },
-  { id: "Wintersemester", label: "Wintersemester" },
-];
-
 const SearchForm = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLanguageLevels, setSelectedLanguageLevels] = useState<string[]>([]);
   const [selectedInstitutionTypes, setSelectedInstitutionTypes] = useState<string[]>([]);
-  const [selectedSemesters, setSelectedSemesters] = useState<string[]>([]);
 
   const handleCheckboxChange = (
     id: string, 
@@ -63,10 +57,6 @@ const SearchForm = () => {
       params.set("type", selectedInstitutionTypes.join(","));
     }
     
-    if (selectedSemesters.length) {
-      params.set("semester", selectedSemesters.join(","));
-    }
-    
     navigate(`/results?${params.toString()}`);
   };
 
@@ -82,7 +72,7 @@ const SearchForm = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Language Level */}
         <div>
           <h3 className="text-lg font-medium mb-2">Sprachniveau</h3>
@@ -120,27 +110,6 @@ const SearchForm = () => {
                   )}
                 />
                 <Label htmlFor={`type-${type.id}`}>{type.label}</Label>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Semester */}
-        <div>
-          <h3 className="text-lg font-medium mb-2">Semester</h3>
-          <div className="space-y-2">
-            {semesters.map((semester) => (
-              <div key={semester.id} className="flex items-center gap-2">
-                <Checkbox 
-                  id={`semester-${semester.id}`} 
-                  checked={selectedSemesters.includes(semester.id)}
-                  onCheckedChange={() => handleCheckboxChange(
-                    semester.id, 
-                    selectedSemesters, 
-                    setSelectedSemesters
-                  )}
-                />
-                <Label htmlFor={`semester-${semester.id}`}>{semester.label}</Label>
               </div>
             ))}
           </div>

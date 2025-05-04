@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { searchUniversities } from "@/services/universityData";
+import { searchUniversities, checkDeadlineStatus } from "@/services/universityData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UniversityCard, { UniversityProps } from "@/components/UniversityCard";
@@ -17,11 +17,17 @@ const Results = () => {
     const query = searchParams.get("query") || "";
     const language = searchParams.get("language")?.split(",") || [];
     const type = searchParams.get("type")?.split(",") || [];
-    const semester = searchParams.get("semester")?.split(",") || [];
     
-    console.log("Filter parameters:", { query, language, type, semester });
-    const results = searchUniversities(query, { language, type, semester });
-    console.log("Search results:", results);
+    console.log("Filter parameters:", { query, language, type });
+    let results = searchUniversities(query, { language, type });
+    
+    // Add deadline status to each university
+    results = results.map(university => ({
+      ...university,
+      deadlineStatus: checkDeadlineStatus(university.id)
+    }));
+    
+    console.log("Search results with deadline status:", results);
     setUniversities(results);
   }, [searchParams]);
 
