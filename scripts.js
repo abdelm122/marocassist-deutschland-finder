@@ -34,7 +34,7 @@ const studienkollegs = [
         address: "Mainaustraße 186, 78464 Konstanz",
         type: "Studienkolleg",
         kurse: "T, W, M",
-        languageRequirements: "Deutsch (B2)",
+        languageRequirements: "Deutsch (B1)",
         testRequirements: ["Aufnahmetest", "Feststellungsprüfung"],
         semesterAvailability: ["Wintersemester", "Sommersemester"],
         websiteUrl: "https://www.htwg-konstanz.de/studienkolleg/",
@@ -49,7 +49,7 @@ const studienkollegs = [
             "Lebenslauf",
             "Antragsformular",
             "Passbild",
-            "Sprachnachweis Deutsch (B2)",
+            "Sprachnachweis Deutsch (B1)",
             "Kopie des Passes"
         ],
         description: "Das Studienkolleg Konstanz bereitet internationale Studienbewerber auf ein Studium an Hochschulen für angewandte Wissenschaften in Baden-Württemberg vor."
@@ -133,6 +133,163 @@ const studienkollegs = [
             "Kopie des Passes"
         ],
         description: "Das Studienkolleg Hamburg bereitet internationale Studienbewerberinnen und Studienbewerber auf ein Studium an einer Hamburger Hochschule vor."
+    },
+    {
+        id: "sk6",
+        name: "Studienkolleg TU Berlin",
+        location: "Berlin",
+        address: "Hardenbergstraße 36, 10623 Berlin",
+        type: "Studienkolleg",
+        kurse: "M, T, W, G, S",
+        languageRequirements: "Deutsch (B2)",
+        testRequirements: ["Aufnahmetest", "Feststellungsprüfung"],
+        semesterAvailability: ["Wintersemester"],
+        websiteUrl: "https://www.studienkolleg.tu-berlin.de",
+        applicationDeadline: "30. Juni 2025",
+        applicationMethod: "Über Uni-Assist",
+        applicationTestDate: "07. Juli 2025",
+        email: "studienkolleg@tu-berlin.de",
+        phone: "+49 30 31429734",
+        requiredDocuments: [
+            "BAC",
+            "Relevé de Notes",
+            "Lebenslauf",
+            "Antragsformular",
+            "Passbild",
+            "Sprachnachweis Deutsch (B2)",
+            "Kopie des Reisepasses"
+        ],
+        description: "Das Studienkolleg der TU Berlin bereitet internationale Studienbewerber auf ein Studium an deutschen Hochschulen vor."
+    },
+    {
+        id: "sk7",
+        name: "Studienkolleg Leipzig",
+        location: "Leipzig",
+        address: "Ritterstraße 26, 04109 Leipzig",
+        type: "Studienkolleg",
+        kurse: "M, T, W, G, S",
+        languageRequirements: "Deutsch (B1)",
+        testRequirements: ["Aufnahmetest", "Feststellungsprüfung"],
+        semesterAvailability: ["Wintersemester"],
+        websiteUrl: "https://www.uni-leipzig.de/stksachs",
+        applicationDeadline: "15. Juni 2025",
+        applicationMethod: "Über Uni-Assist",
+        applicationTestDate: "September 2025",
+        email: "studienkolleg@uni-leipzig.de",
+        phone: "+49 341 9730030",
+        requiredDocuments: [
+            "BAC",
+            "Relevé de Notes",
+            "Lebenslauf",
+            "Antragsformular",
+            "Passbild",
+            "Sprachnachweis Deutsch (B1)"
+        ],
+        description: "Das Studienkolleg Leipzig bereitet internationale Studierende auf das Studium an Universitäten und Hochschulen in Sachsen vor."
+    },
+    {
+        id: "sk8",
+        name: "Studienkolleg Karlsruhe (KIT)",
+        location: "Karlsruhe",
+        address: "Adenauerring 2, 76131 Karlsruhe",
+        type: "Studienkolleg",
+        kurse: "T, W",
+        languageRequirements: "Deutsch (B1)",
+        testRequirements: ["Aufnahmetest", "Feststellungsprüfung"],
+        semesterAvailability: ["Wintersemester"],
+        websiteUrl: "https://www.stk.kit.edu",
+        applicationDeadline: "15. Juli 2025",
+        applicationMethod: "Über KIT (IStO)",
+        applicationTestDate: "September 2025",
+        email: "info@stk.kit.edu",
+        phone: "+49 721 60844929",
+        requiredDocuments: [
+            "BAC",
+            "Relevé de Notes",
+            "Lebenslauf",
+            "Antragsformular",
+            "Passbild",
+            "Sprachnachweis Deutsch (B1)"
+        ],
+        description: "Das Studienkolleg des KIT bereitet internationale Studienbewerber auf ein Studium an deutschen Hochschulen vor."
+    },
+    {
+        id: "sk9",
+        name: "Studienkolleg für ausländische Studierende Heidelberg",
+        location: "Heidelberg",
+        address: "Im Neuenheimer Feld 684, 69120 Heidelberg",
+        type: "Studienkolleg",
+        kurse: "M, T, W, G, S",
+        languageRequirements: "Deutsch (B2)",
+        testRequirements: ["Aufnahmetest", "Feststellungsprüfung"],
+        semesterAvailability: ["Wintersemester"],
+        websiteUrl: "https://www.isz.uni-heidelberg.de/d_kurse_sk.html",
+        applicationDeadline: "15. Juli 2025",
+        applicationMethod: "Über Universität",
+        applicationTestDate: "06. Oktober 2025",
+        email: "studienkolleg@isz.uni-heidelberg.de",
+        phone: "+49 6221 545110",
+        requiredDocuments: [
+            "BAC",
+            "Relevé de Notes",
+            "Lebenslauf",
+            "Antragsformular",
+            "Passbild",
+            "Sprachnachweis Deutsch (B2)"
+        ],
+        description: "Das Studienkolleg in Heidelberg bereitet internationale Studierende auf ein Universitätsstudium vor."
+    },
+    {
+        id: "sk10",
+        name: "Studienkolleg Hannover",
+        location: "Hannover",
+        address: "Am Kleinen Felde 30, 30167 Hannover",
+        type: "Studienkolleg",
+        kurse: "M, T, W, G, S",
+        languageRequirements: "Deutsch (TELC/Goethe B2)",
+        testRequirements: ["Aufnahmetest", "Feststellungsprüfung"],
+        semesterAvailability: ["Wintersemester"],
+        websiteUrl: "https://www.stk.uni-hannover.de",
+        applicationDeadline: "15. Juli 2025",
+        applicationMethod: "Via Uni/Hochschule",
+        applicationTestDate: "04. September 2025",
+        email: "sekretariat@stk.uni-hannover.de",
+        phone: "+49 511 76219963",
+        requiredDocuments: [
+            "BAC",
+            "Relevé de Notes",
+            "Lebenslauf",
+            "Antragsformular",
+            "Passbild",
+            "Sprachnachweis Deutsch (B2)"
+        ],
+        description: "Das Studienkolleg in Hannover bereitet internationale Studierende auf ein Studium an niedersächsischen Hochschulen vor."
+    },
+    {
+        id: "sk11",
+        name: "Studienkolleg Kassel",
+        location: "Kassel",
+        address: "Mönchebergstraße 19, 34109 Kassel",
+        type: "Studienkolleg",
+        kurse: "T, W",
+        languageRequirements: "Deutsch (TELC/Goethe B1)",
+        testRequirements: ["Aufnahmetest", "Feststellungsprüfung"],
+        semesterAvailability: ["Sommersemester"],
+        websiteUrl: "https://www.uni-kassel.de/einrichtung/studienkolleg",
+        applicationDeadline: "30. April 2025",
+        applicationMethod: "Über Uni-Assist",
+        applicationTestDate: "14. Juni 2025",
+        email: "studkoll@uni-kassel.de",
+        phone: "+49 561 8042716",
+        requiredDocuments: [
+            "BAC",
+            "Relevé de Notes",
+            "Lebenslauf",
+            "Antragsformular",
+            "Passbild",
+            "Sprachnachweis Deutsch (B1)"
+        ],
+        description: "Das Studienkolleg Kassel bereitet internationale Studierende auf ein Fachhochschul- oder Universitätsstudium vor."
     }
 ];
 
@@ -158,8 +315,8 @@ document.addEventListener('DOMContentLoaded', function() {
             filterForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const query = document.getElementById('searchQuery').value.toLowerCase();
-                const germanChecked = document.getElementById('germanFilter').checked;
-                const englishChecked = document.getElementById('englishFilter').checked;
+                const b1Checked = document.getElementById('b1Filter').checked;
+                const b2Checked = document.getElementById('b2Filter').checked;
                 
                 let filtered = studienkollegs;
                 
@@ -173,12 +330,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Filter by language
                 const languageFilters = [];
-                if (germanChecked) languageFilters.push('deutsch');
-                if (englishChecked) languageFilters.push('englisch');
+                if (b1Checked) languageFilters.push('B1');
+                if (b2Checked) languageFilters.push('B2');
                 
                 if (languageFilters.length > 0) {
                     filtered = filtered.filter(sk => {
-                        const langReq = sk.languageRequirements.toLowerCase();
+                        const langReq = sk.languageRequirements.toUpperCase();
                         return languageFilters.some(lang => langReq.includes(lang));
                     });
                 }
@@ -214,15 +371,15 @@ document.addEventListener('DOMContentLoaded', function() {
             searchForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const query = document.getElementById('query').value;
-                const germanChecked = document.getElementById('german').checked;
-                const englishChecked = document.getElementById('english').checked;
+                const b1Checked = document.getElementById('b1').checked;
+                const b2Checked = document.getElementById('b2').checked;
                 
                 let params = [];
                 if (query) params.push(`query=${encodeURIComponent(query)}`);
                 
                 const languages = [];
-                if (germanChecked) languages.push('deutsch');
-                if (englishChecked) languages.push('englisch');
+                if (b1Checked) languages.push('B1');
+                if (b2Checked) languages.push('B2');
                 
                 if (languages.length > 0) {
                     params.push(`language=${languages.join(',')}`);
@@ -280,12 +437,12 @@ function displayStudienkollegs(skList) {
                             <div class="text-sm">${sk.kurse}</div>
                         </div>
                         <div class="mb-3">
-                            <div class="text-sm font-medium text-gray-700">Sprachanforderung:</div>
+                            <div class="text-sm font-medium text-gray-700">Sprachniveau:</div>
                             <div class="text-sm">${sk.languageRequirements}</div>
                         </div>
                         <div>
-                            <div class="text-sm font-medium text-gray-700">Bewerbungsfrist:</div>
-                            <div class="text-sm">${sk.applicationDeadline}</div>
+                            <div class="text-sm font-medium text-gray-700">Bewerbungsmethode:</div>
+                            <div class="text-sm">${sk.applicationMethod}</div>
                         </div>
                     </div>
                     
@@ -351,7 +508,7 @@ function displayStudienkollegDetail(sk) {
                             </div>
                             
                             <div>
-                                <h3 class="text-sm font-medium text-gray-700">Sprachanforderungen:</h3>
+                                <h3 class="text-sm font-medium text-gray-700">Sprachniveau:</h3>
                                 <p>${sk.languageRequirements}</p>
                             </div>
                             
@@ -425,7 +582,7 @@ function displayStudienkollegDetail(sk) {
 // Function to reset filters
 function resetFilters() {
     document.getElementById('searchQuery').value = '';
-    document.getElementById('germanFilter').checked = false;
-    document.getElementById('englishFilter').checked = false;
+    document.getElementById('b1Filter').checked = false;
+    document.getElementById('b2Filter').checked = false;
     displayStudienkollegs(studienkollegs);
 }

@@ -4,11 +4,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MAROCASSIST - Studieren in Deutschland</title>
-    <meta name="description" content="MAROCASSIST hilft marokkanischen Studenten, die richtige Hochschule oder Studienkolleg in Deutschland zu finden." />
+    <title>MAROCASSIST - Dein Weg zum Studium in Deutschland</title>
+    <meta name="description" content="MAROCASSIST hilft marokkanischen Studenten bei der Vorbereitung auf ein Studium in Deutschland." />
     <meta name="author" content="MAROCASSIST" />
-    <meta property="og:title" content="MAROCASSIST - Studieren in Deutschland" />
-    <meta property="og:description" content="MAROCASSIST hilft marokkanischen Studenten, die richtige Hochschule oder Studienkolleg in Deutschland zu finden." />
+    <meta property="og:title" content="MAROCASSIST - Dein Weg zum Studium in Deutschland" />
+    <meta property="og:description" content="MAROCASSIST hilft marokkanischen Studenten bei der Vorbereitung auf ein Studium in Deutschland." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -27,7 +27,7 @@
           <a href="index.html" class="text-2xl font-bold text-blue-600">MAROCASSIST</a>
           <nav>
             <ul class="flex space-x-6">
-              <li><a href="index.html" class="hover:text-blue-600 transition-colors">Startseite</a></li>
+              <li><a href="index.html" class="hover:text-blue-600 transition-colors font-semibold text-blue-600">Startseite</a></li>
               <li><a href="studienkollegs.html" class="hover:text-blue-600 transition-colors">Studienkollegs</a></li>
               <li><a href="#" class="hover:text-blue-600 transition-colors">Über uns</a></li>
               <li><a href="#" class="hover:text-blue-600 transition-colors">Kontakt</a></li>
@@ -35,177 +35,120 @@
           </nav>
         </div>
       </header>
-      
-      <!-- Main Content -->
-      <main class="flex-grow">
-        <div class="container mx-auto px-4 py-10">
-          <!-- Hero Section -->
-          <section class="text-center mb-12">
-            <div class="max-w-3xl mx-auto">
-              <h1 class="text-4xl font-bold mb-4 md:mb-6">
-                Dein Weg zum Studium in Deutschland
-              </h1>
-              <p class="text-xl text-gray-600 mb-8">
-                MAROCASSIST hilft marokkanischen Studenten, die richtige Hochschule in Deutschland zu finden
+
+      <!-- Hero Section -->
+      <section class="py-16 bg-gradient-to-r from-blue-500 to-blue-700 text-white">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+              <h1 class="text-4xl md:text-5xl font-bold mb-4">Dein Weg zum Studium in Deutschland</h1>
+              <p class="text-xl mb-8">
+                Wir helfen dir, das passende Studienkolleg in Deutschland zu finden und begleiten dich auf deinem Bildungsweg.
               </p>
-              
-              <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <div class="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2 text-sm">
-                  <div class="h-3 w-3 bg-green-500 rounded-full"></div>
-                  Universitäten
-                </div>
-                <div class="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2 text-sm">
-                  <div class="h-3 w-3 bg-blue-500 rounded-full"></div>
-                  Studienkollegs
-                </div>
-                <div class="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2 text-sm">
-                  <div class="h-3 w-3 bg-amber-500 rounded-full"></div>
-                  Sprachkurse
-                </div>
-              </div>
-              
-              <!-- Flag visual -->
-              <div class="flex justify-center gap-6 mb-8">
-                <div class="relative w-24 h-16">
-                  <div class="absolute inset-0 flex">
-                    <div class="w-1/2 h-full bg-red-600"></div>
-                    <div class="w-1/2 h-full bg-green-600"></div>
-                  </div>
-                  <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-8 h-8 transform rotate-45 text-green-600 text-2xl">
-                      ★
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="text-3xl font-bold">→</div>
-                
-                <div class="relative w-24 h-16">
-                  <div class="absolute inset-0 flex flex-col">
-                    <div class="w-full h-1/3 bg-black"></div>
-                    <div class="w-full h-1/3 bg-red-600"></div>
-                    <div class="w-full h-1/3 bg-yellow-500"></div>
-                  </div>
-                </div>
+              <div class="flex flex-wrap gap-4">
+                <a href="studienkollegs.html" class="px-8 py-3 bg-white text-blue-700 rounded-md hover:bg-gray-100 transition-colors font-semibold">
+                  Alle Studienkollegs ansehen
+                </a>
               </div>
             </div>
-          </section>
-          
-          <!-- Search Section -->
-          <section class="mb-16">
-            <div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-md">
-              <h2 class="text-2xl font-bold mb-4 text-center">Finde dein Studienkolleg</h2>
-              
-              <form id="searchForm" class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div class="form-group">
-                    <label for="query" class="block text-gray-700 mb-2">Suchbegriff</label>
-                    <input type="text" id="query" placeholder="Name oder Ort..." class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="language" class="block text-gray-700 mb-2">Sprache</label>
-                    <div class="space-y-2">
-                      <div class="flex items-center">
-                        <input type="checkbox" id="german" name="language" value="deutsch" class="mr-2">
-                        <label for="german">Deutsch</label>
-                      </div>
-                      <div class="flex items-center">
-                        <input type="checkbox" id="english" name="language" value="englisch" class="mr-2">
-                        <label for="english">Englisch</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="flex justify-center">
-                  <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Suchen</button>
-                </div>
-              </form>
+            <div class="md:w-1/2 flex justify-center">
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Studierende vor einer Universität" class="rounded-lg shadow-xl max-w-full h-auto" style="max-height: 400px;">
             </div>
-          </section>
-          
-          <!-- Info Sections -->
-          <section class="mb-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div class="bg-white rounded-xl p-6 shadow-md">
-                <h2 class="text-2xl font-semibold mb-4">Über MAROCASSIST</h2>
-                <p class="mb-4">
-                  Wir helfen marokkanischen Studenten beim Finden der richtigen Hochschule und unterstützen bei allen Schritten des Bewerbungsprozesses.
-                </p>
-                <ul class="space-y-2 mb-4">
-                  <li class="flex items-start gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    Umfassende Informationen zu Studienkollegs
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    Spezifische Anforderungen für marokkanische Bewerber
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    Studienfinanzierungsinformationen
-                  </li>
-                </ul>
-              </div>
-              
-              <div class="bg-white rounded-xl p-6 shadow-md">
-                <h2 class="text-2xl font-semibold mb-4">Schritte zum Studium</h2>
-                <ol class="space-y-4">
-                  <li class="flex gap-4">
-                    <div class="bg-blue-600 text-white h-8 w-8 rounded-full flex items-center justify-center shrink-0">
-                      1
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Studienkolleg finden</h3>
-                      <p class="text-sm text-gray-600">Nutzen Sie unsere Suchfunktion, um passende Studienkollegs zu finden.</p>
-                    </div>
-                  </li>
-                  
-                  <li class="flex gap-4">
-                    <div class="bg-blue-600 text-white h-8 w-8 rounded-full flex items-center justify-center shrink-0">
-                      2
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Unterlagen vorbereiten</h3>
-                      <p class="text-sm text-gray-600">Informieren Sie sich über benötigte Dokumente und bereiten Sie diese vor.</p>
-                    </div>
-                  </li>
-                  
-                  <li class="flex gap-4">
-                    <div class="bg-blue-600 text-white h-8 w-8 rounded-full flex items-center justify-center shrink-0">
-                      3
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Bewerbung einreichen</h3>
-                      <p class="text-sm text-gray-600">Reichen Sie Ihre Bewerbung direkt oder über uni-assist ein.</p>
-                    </div>
-                  </li>
-                  
-                  <li class="flex gap-4">
-                    <div class="bg-blue-600 text-white h-8 w-8 rounded-full flex items-center justify-center shrink-0">
-                      4
-                    </div>
-                    <div>
-                      <h3 class="font-medium">Aufnahmetest bestehen</h3>
-                      <p class="text-sm text-gray-600">Bereiten Sie sich auf den Aufnahmetest vor und bestehen Sie ihn.</p>
-                    </div>
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </section>
+          </div>
         </div>
-      </main>
-      
+      </section>
+
+      <!-- Search Section -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">Finde dein Studienkolleg</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              Gib deine Präferenzen ein und wir helfen dir, das passende Studienkolleg für deine Bedürfnisse zu finden.
+            </p>
+          </div>
+
+          <div class="max-w-3xl mx-auto">
+            <form id="searchForm" class="bg-white rounded-xl shadow-lg p-8">
+              <div class="mb-6">
+                <label for="query" class="block text-gray-700 font-medium mb-2">Name oder Ort</label>
+                <input type="text" id="query" placeholder="z.B. München oder Studienkolleg Berlin" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </div>
+
+              <div class="mb-8">
+                <p class="block text-gray-700 font-medium mb-2">Sprachniveau</p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="flex items-center">
+                    <input type="checkbox" id="b1" name="language" class="mr-2 h-5 w-5">
+                    <label for="b1" class="text-gray-700">B1</label>
+                  </div>
+                  <div class="flex items-center">
+                    <input type="checkbox" id="b2" name="language" class="mr-2 h-5 w-5">
+                    <label for="b2" class="text-gray-700">B2</label>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="w-full px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                Studienkollegs suchen
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="py-16">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">Wie wir dir helfen können</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              MAROCASSIST unterstützt dich auf deinem Weg zum Studium in Deutschland mit verschiedenen Services und Informationen.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <div class="text-blue-600 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Studienkolleg-Finder</h3>
+              <p class="text-gray-600">
+                Finde das passende Studienkolleg für deine Vorbildung und deinen gewünschten Studiengang.
+              </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <div class="text-blue-600 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Informationen & Beratung</h3>
+              <p class="text-gray-600">
+                Detaillierte Informationen über Bewerbungsfristen, Anforderungen und benötigte Dokumente.
+              </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow-md">
+              <div class="text-blue-600 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Übergang nach Deutschland</h3>
+              <p class="text-gray-600">
+                Hilfestellung bei Visumsanträgen, Unterkunftssuche und Integration in Deutschland.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Footer -->
-      <footer class="bg-gray-800 text-white py-10">
+      <footer class="bg-gray-800 text-white py-10 mt-auto">
         <div class="container mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
