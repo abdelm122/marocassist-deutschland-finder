@@ -11,15 +11,27 @@ import UniversityCard from "@/components/UniversityCard";
 
 const Index = () => {
   const [featuredUniversities, setFeaturedUniversities] = useState<UniversityProps[]>([]);
+  const [specificUniversities, setSpecificUniversities] = useState<UniversityProps[]>([]);
   
   useEffect(() => {
     // Get all universities and filter to show only Studienkollegs
     const allUniversities = getAllUniversities();
+    
+    // Get specific universities the user is looking for
+    const specificUnis = allUniversities.filter(uni => 
+      ["frankfurt", "halle", "jena", "nordhausen", "bochum", "wismar", "darmstadt"].some(
+        keyword => uni.name.toLowerCase().includes(keyword.toLowerCase()) || 
+                  uni.location.toLowerCase().includes(keyword.toLowerCase())
+      )
+    );
+    
+    // Regular featured studienkollegs
     const studienkollegs = allUniversities
       .filter(uni => uni.type === "Studienkolleg")
       .slice(0, 6); // Limit to 6 for display
     
     setFeaturedUniversities(studienkollegs);
+    setSpecificUniversities(specificUnis);
   }, []);
 
   return (
@@ -83,6 +95,22 @@ const Index = () => {
           {/* Search Section */}
           <section className="mb-16">
             <SearchForm />
+          </section>
+          
+          {/* Highlighted Universities Section */}
+          <section className="mb-16">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl font-bold">Featured Universities</h2>
+              <Link to="/results">
+                <Button variant="outline">Alle anzeigen</Button>
+              </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {specificUniversities.map((university) => (
+                <UniversityCard key={university.id} university={university} />
+              ))}
+            </div>
           </section>
           
           {/* Featured Studienkollegs Section */}
