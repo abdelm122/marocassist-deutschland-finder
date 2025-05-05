@@ -10,15 +10,18 @@ import {
 import { UniversityProps, UniversityDetail } from "@/types/universityTypes";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Save } from "lucide-react";
+import { Edit, LogOut, Save } from "lucide-react";
 import UniversityEditForm from "@/components/admin/UniversityEditForm";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
+import LoginForm from "@/components/admin/LoginForm";
 
 const AdminDashboard = () => {
   const [universities, setUniversities] = useState<UniversityProps[]>([]);
   const [selectedUniversity, setSelectedUniversity] = useState<UniversityDetail | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const { toast } = useToast();
+  const { isAuthenticated, user, logout } = useAuth();
 
   useEffect(() => {
     const fetchUniversities = () => {
@@ -26,8 +29,10 @@ const AdminDashboard = () => {
       setUniversities(allUniversities);
     };
 
-    fetchUniversities();
-  }, []);
+    if (isAuthenticated) {
+      fetchUniversities();
+    }
+  }, [isAuthenticated]);
 
   const handleEditClick = (id: string) => {
     const universityDetail = getUniversityById(id);
@@ -71,13 +76,46 @@ const AdminDashboard = () => {
     setSelectedUniversity(null);
   };
 
+  const handleLogout = () => {
+    logout();
+    toast({
+      title: "Abgemeldet",
+      description: "Sie wurden erfolgreich abgemeldet.",
+    });
+  };
+
+  // If not authenticated, show the login form
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow flex items-center justify-center py-10 px-4">
+          <LoginForm />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
       <main className="flex-grow py-10">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+            <div className="flex items-center gap-4">
+              <p className="text-gray-600">
+                Angemeldet als <span className="font-semibold">{user}</span>
+              </p>
+              <Button variant="outline" onClick={handleLogout}>
+                <LogOut className="mr-2 h-4 w-4" />
+                Abmelden
+              </Button>
+            </div>
+          </div>
+          
           <p className="text-gray-600 mb-8">
             Hier können Sie die Informationen zu Universitäten und Studienkollegs bearbeiten.
           </p>
