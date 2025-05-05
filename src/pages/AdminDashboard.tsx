@@ -10,7 +10,7 @@ import {
 import { UniversityProps, UniversityDetail } from "@/types/universityTypes";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Loader2, LogOut, Save } from "lucide-react";
+import { Edit, Loader2, LogOut, Save, RefreshCw } from "lucide-react";
 import UniversityEditForm from "@/components/admin/UniversityEditForm";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
@@ -22,27 +22,33 @@ const AdminDashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const { toast } = useToast();
   const { isAuthenticated, user, logout, isLoading: authLoading } = useAuth();
 
-  useEffect(() => {
-    const fetchUniversities = async () => {
-      try {
-        setIsLoading(true);
-        const allUniversities = await fetchAllUniversities();
-        setUniversities(allUniversities);
-      } catch (error) {
-        console.error("Error fetching universities:", error);
-        toast({
-          title: "Fehler",
-          description: "Universitäten konnten nicht geladen werden.",
-          variant: "destructive",
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const fetchUniversities = async () => {
+    try {
+      setIsRefreshing(true);
+      const allUniversities = await fetchAllUniversities();
+      setUniversities(allUniversities);
+      toast({
+        title: "Daten aktualisiert",
+        description: "Die Universitätsdaten wurden erfolgreich aktualisiert.",
+      });
+    } catch (error) {
+      console.error("Error fetching universities:", error);
+      toast({
+        title: "Fehler",
+        description: "Universitäten konnten nicht geladen werden.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsRefreshing(false);
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     if (isAuthenticated && !authLoading) {
       fetchUniversities();
     }
@@ -83,8 +89,7 @@ const AdminDashboard = () => {
       setSelectedUniversity(null);
       
       // Refresh the list
-      const refreshedList = await fetchAllUniversities();
-      setUniversities(refreshedList);
+      await fetchUniversities();
       
       toast({
         title: "Erfolgreich gespeichert",
@@ -113,6 +118,10 @@ const AdminDashboard = () => {
       title: "Abgemeldet",
       description: "Sie wurden erfolgreich abgemeldet.",
     });
+  };
+
+  const handleRefresh = () => {
+    fetchUniversities();
   };
 
   // If authentication is still loading, show a loading indicator
@@ -153,6 +162,14 @@ const AdminDashboard = () => {
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-3xl font-bold">Admin Dashboard</h1>
             <div className="flex items-center gap-4">
+              <Button 
+                variant="outline" 
+                onClick={handleRefresh}
+                disabled={isRefreshing}
+              >
+                <RefreshCw className={`mr-2 h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                Daten aktualisieren
+              </Button>
               <p className="text-gray-600">
                 Angemeldet als <span className="font-semibold">{user}</span>
               </p>
@@ -192,14 +209,13 @@ const AdminDashboard = () => {
                     <TableHead>Name</TableHead>
                     <TableHead>Standort</TableHead>
                     <TableHead>Typ</TableHead>
-                    <TableHead>Bewerbungsfrist</TableHead>
                     <TableHead>Aktionen</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {universities.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={5} className="text-center py-8">
+                      <TableCell colSpan={4} className="text-center py-8">
                         Keine Universitäten gefunden.
                       </TableCell>
                     </TableRow>
@@ -209,9 +225,6 @@ const AdminDashboard = () => {
                         <TableCell className="font-medium">{university.name}</TableCell>
                         <TableCell>{university.location}</TableCell>
                         <TableCell>{university.type}</TableCell>
-                        <TableCell>
-                          <span className="text-gray-600 italic">Wird geladen...</span>
-                        </TableCell>
                         <TableCell>
                           <Button 
                             variant="outline" 

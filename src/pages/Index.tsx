@@ -29,7 +29,7 @@ const Index = () => {
         const specificUnis = allUniversities.filter(uni => 
           targetCities.some(
             keyword => uni.name.toLowerCase().includes(keyword.toLowerCase()) || 
-                      uni.location.toLowerCase().includes(keyword.toLowerCase())
+                     uni.location.toLowerCase().includes(keyword.toLowerCase())
           )
         );
         

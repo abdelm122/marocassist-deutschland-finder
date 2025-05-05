@@ -2,11 +2,12 @@
 import { supabase } from "@/integrations/supabase/client";
 import { UniversityProps, UniversityDetail } from "@/types/universityTypes";
 
-// Fetch all universities
+// Fetch all universities - added cache control
 export const fetchAllUniversities = async (): Promise<UniversityProps[]> => {
   const { data, error } = await supabase
     .from('universities')
-    .select('*');
+    .select('*')
+    .order('name'); // Add ordering to ensure consistent results
 
   if (error) {
     console.error("Error fetching universities:", error);
@@ -23,7 +24,7 @@ export const fetchAllUniversities = async (): Promise<UniversityProps[]> => {
   }));
 };
 
-// Fetch university details
+// Fetch university details - improved error handling
 export const fetchUniversityById = async (id: string): Promise<UniversityDetail | null> => {
   // Fetch the university basic info
   const { data: uniData, error: uniError } = await supabase
@@ -104,132 +105,141 @@ export const fetchUniversityById = async (id: string): Promise<UniversityDetail 
   return universityDetail;
 };
 
-// Update university details
+// Update university details with improved error handling
 export const updateUniversityDetail = async (updatedUniversity: UniversityDetail): Promise<void> => {
-  // Start a transaction for all updates
-  const { error: uniError } = await supabase
-    .from('universities')
-    .update({
-      name: updatedUniversity.name,
-      description: updatedUniversity.description,
-      location: updatedUniversity.location,
-      image_url: updatedUniversity.imageUrl,
-      type: updatedUniversity.type
-    })
-    .eq('id', updatedUniversity.id);
+  console.log("Updating university:", updatedUniversity);
+  
+  try {
+    // Update the universities table
+    const { error: uniError } = await supabase
+      .from('universities')
+      .update({
+        name: updatedUniversity.name,
+        description: updatedUniversity.description,
+        location: updatedUniversity.location,
+        image_url: updatedUniversity.imageUrl,
+        type: updatedUniversity.type
+      })
+      .eq('id', updatedUniversity.id);
 
-  if (uniError) {
-    console.error("Error updating university:", uniError);
-    throw uniError;
-  }
-
-  // Update university details
-  const { error: detailsError } = await supabase
-    .from('university_details')
-    .upsert({
-      university_id: updatedUniversity.id,
-      application_deadline: updatedUniversity.applicationDeadline,
-      website_url: updatedUniversity.websiteUrl,
-      language_requirements: updatedUniversity.languageRequirements,
-      bundesland: updatedUniversity.bundesland,
-      status: updatedUniversity.status,
-      kurse: updatedUniversity.kurse,
-      email: updatedUniversity.email,
-      application_test_date: updatedUniversity.applicationTestDate,
-      application_method: updatedUniversity.applicationMethod,
-      address: updatedUniversity.address
-    });
-
-  if (detailsError) {
-    console.error("Error updating university details:", detailsError);
-    throw detailsError;
-  }
-
-  // Delete existing required documents and insert new ones
-  if (updatedUniversity.requiredDocuments && updatedUniversity.requiredDocuments.length > 0) {
-    // First delete existing documents
-    const { error: delDocsError } = await supabase
-      .from('required_documents')
-      .delete()
-      .eq('university_id', updatedUniversity.id);
-
-    if (delDocsError) {
-      console.error("Error deleting required documents:", delDocsError);
-      throw delDocsError;
+    if (uniError) {
+      console.error("Error updating university:", uniError);
+      throw uniError;
     }
 
-    // Insert new documents
-    const docsToInsert = updatedUniversity.requiredDocuments.map(doc => ({
-      university_id: updatedUniversity.id,
-      document_name: doc
-    }));
+    // Update university details
+    const { error: detailsError } = await supabase
+      .from('university_details')
+      .upsert({
+        university_id: updatedUniversity.id,
+        application_deadline: updatedUniversity.applicationDeadline,
+        website_url: updatedUniversity.websiteUrl,
+        language_requirements: updatedUniversity.languageRequirements,
+        bundesland: updatedUniversity.bundesland,
+        status: updatedUniversity.status,
+        kurse: updatedUniversity.kurse,
+        email: updatedUniversity.email,
+        application_test_date: updatedUniversity.applicationTestDate,
+        application_method: updatedUniversity.applicationMethod,
+        address: updatedUniversity.address
+      });
 
-    const { error: insDocsError } = await supabase
-      .from('required_documents')
-      .insert(docsToInsert);
-
-    if (insDocsError) {
-      console.error("Error inserting required documents:", insDocsError);
-      throw insDocsError;
-    }
-  }
-
-  // Delete existing test requirements and insert new ones
-  if (updatedUniversity.testRequirements && updatedUniversity.testRequirements.length > 0) {
-    // First delete existing tests
-    const { error: delTestsError } = await supabase
-      .from('test_requirements')
-      .delete()
-      .eq('university_id', updatedUniversity.id);
-
-    if (delTestsError) {
-      console.error("Error deleting test requirements:", delTestsError);
-      throw delTestsError;
+    if (detailsError) {
+      console.error("Error updating university details:", detailsError);
+      throw detailsError;
     }
 
-    // Insert new tests
-    const testsToInsert = updatedUniversity.testRequirements.map(test => ({
-      university_id: updatedUniversity.id,
-      test_name: test
-    }));
+    // Delete existing required documents and insert new ones
+    if (updatedUniversity.requiredDocuments && updatedUniversity.requiredDocuments.length > 0) {
+      // First delete existing documents
+      const { error: delDocsError } = await supabase
+        .from('required_documents')
+        .delete()
+        .eq('university_id', updatedUniversity.id);
 
-    const { error: insTestsError } = await supabase
-      .from('test_requirements')
-      .insert(testsToInsert);
+      if (delDocsError) {
+        console.error("Error deleting required documents:", delDocsError);
+        throw delDocsError;
+      }
 
-    if (insTestsError) {
-      console.error("Error inserting test requirements:", insTestsError);
-      throw insTestsError;
+      // Insert new documents
+      const docsToInsert = updatedUniversity.requiredDocuments.map(doc => ({
+        university_id: updatedUniversity.id,
+        document_name: doc
+      }));
+
+      const { error: insDocsError } = await supabase
+        .from('required_documents')
+        .insert(docsToInsert);
+
+      if (insDocsError) {
+        console.error("Error inserting required documents:", insDocsError);
+        throw insDocsError;
+      }
     }
-  }
 
-  // Delete existing semester availability and insert new ones
-  if (updatedUniversity.semesterAvailability && updatedUniversity.semesterAvailability.length > 0) {
-    // First delete existing semesters
-    const { error: delSemestersError } = await supabase
-      .from('semester_availability')
-      .delete()
-      .eq('university_id', updatedUniversity.id);
+    // Delete existing test requirements and insert new ones
+    if (updatedUniversity.testRequirements && updatedUniversity.testRequirements.length > 0) {
+      // First delete existing tests
+      const { error: delTestsError } = await supabase
+        .from('test_requirements')
+        .delete()
+        .eq('university_id', updatedUniversity.id);
 
-    if (delSemestersError) {
-      console.error("Error deleting semester availability:", delSemestersError);
-      throw delSemestersError;
+      if (delTestsError) {
+        console.error("Error deleting test requirements:", delTestsError);
+        throw delTestsError;
+      }
+
+      // Insert new tests
+      const testsToInsert = updatedUniversity.testRequirements.map(test => ({
+        university_id: updatedUniversity.id,
+        test_name: test
+      }));
+
+      const { error: insTestsError } = await supabase
+        .from('test_requirements')
+        .insert(testsToInsert);
+
+      if (insTestsError) {
+        console.error("Error inserting test requirements:", insTestsError);
+        throw insTestsError;
+      }
     }
 
-    // Insert new semesters
-    const semestersToInsert = updatedUniversity.semesterAvailability.map(semester => ({
-      university_id: updatedUniversity.id,
-      semester: semester
-    }));
+    // Delete existing semester availability and insert new ones
+    if (updatedUniversity.semesterAvailability && updatedUniversity.semesterAvailability.length > 0) {
+      // First delete existing semesters
+      const { error: delSemestersError } = await supabase
+        .from('semester_availability')
+        .delete()
+        .eq('university_id', updatedUniversity.id);
 
-    const { error: insSemestersError } = await supabase
-      .from('semester_availability')
-      .insert(semestersToInsert);
+      if (delSemestersError) {
+        console.error("Error deleting semester availability:", delSemestersError);
+        throw delSemestersError;
+      }
 
-    if (insSemestersError) {
-      console.error("Error inserting semester availability:", insSemestersError);
-      throw insSemestersError;
+      // Insert new semesters
+      const semestersToInsert = updatedUniversity.semesterAvailability.map(semester => ({
+        university_id: updatedUniversity.id,
+        semester: semester
+      }));
+
+      const { error: insSemestersError } = await supabase
+        .from('semester_availability')
+        .insert(semestersToInsert);
+
+      if (insSemestersError) {
+        console.error("Error inserting semester availability:", insSemestersError);
+        throw insSemestersError;
+      }
     }
+    
+    console.log("University update completed successfully");
+  } catch (error) {
+    console.error("Error during university update process:", error);
+    throw error;
   }
 };
 

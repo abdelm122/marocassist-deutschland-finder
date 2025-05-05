@@ -9,16 +9,39 @@ import {
 
 // Export functions to access data that now use Supabase
 export const getAllUniversities = async (): Promise<UniversityProps[]> => {
-  return await fetchAllUniversities();
+  console.log("Fetching all universities...");
+  try {
+    const universities = await fetchAllUniversities();
+    console.log(`Successfully fetched ${universities.length} universities`);
+    return universities;
+  } catch (error) {
+    console.error("Error in getAllUniversities:", error);
+    throw error;
+  }
 };
 
 export const getUniversityById = async (id: string): Promise<UniversityDetail | null> => {
-  return await fetchUniversityById(id);
+  console.log(`Fetching university with ID: ${id}`);
+  try {
+    const university = await fetchUniversityById(id);
+    console.log("University fetch result:", university ? "found" : "not found");
+    return university;
+  } catch (error) {
+    console.error(`Error fetching university with ID ${id}:`, error);
+    throw error;
+  }
 };
 
 // Update university details - now uses Supabase
 export const updateUniversityDetail = async (updatedUniversity: UniversityDetail): Promise<void> => {
-  await updateUniversityInSupabase(updatedUniversity);
+  console.log("Updating university detail:", updatedUniversity.id);
+  try {
+    await updateUniversityInSupabase(updatedUniversity);
+    console.log("University update completed");
+  } catch (error) {
+    console.error("Error in updateUniversityDetail:", error);
+    throw error;
+  }
 };
 
 // Filtering universities - now uses Supabase
@@ -26,7 +49,15 @@ export const getFilteredUniversities = async (
   searchQuery: string = "", 
   types: string[] = []
 ): Promise<UniversityProps[]> => {
-  return await filterUniversities(searchQuery, { type: types });
+  console.log("Filtering universities with query:", searchQuery, "types:", types);
+  try {
+    const universities = await filterUniversities(searchQuery, { type: types });
+    console.log(`Found ${universities.length} universities matching filters`);
+    return universities;
+  } catch (error) {
+    console.error("Error in getFilteredUniversities:", error);
+    throw error;
+  }
 };
 
 // Search universities - now uses Supabase
@@ -38,7 +69,15 @@ export const searchUniversities = async (
     semester?: string[]
   } = {}
 ): Promise<UniversityProps[]> => {
-  return await filterUniversities(query, filters);
+  console.log("Searching universities with query:", query, "filters:", filters);
+  try {
+    const universities = await filterUniversities(query, filters);
+    console.log(`Search returned ${universities.length} results`);
+    return universities;
+  } catch (error) {
+    console.error("Error in searchUniversities:", error);
+    throw error;
+  }
 };
 
 // Function to check if application deadline is still open
