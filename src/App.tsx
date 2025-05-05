@@ -6,6 +6,7 @@ import UniversityDetail from "./pages/UniversityDetail";
 import NotFound from "./pages/NotFound";
 import Information from "./pages/Information";
 import Documents from "./pages/Documents";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/university/:id" element={<UniversityDetail />} />
         <Route path="/information" element={<Information />} />
         <Route path="/documents" element={<Documents />} />
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,3 @@
-
 import { UniversityProps, UniversityDetail } from "../types/universityTypes";
 import { studienkollegs } from "../data/studienkollegs";
 import { sprachinstitute } from "../data/sprachinstitute";
@@ -22,6 +21,29 @@ export const getAllUniversities = () => universities;
 
 export const getUniversityById = (id: string): UniversityDetail | null => {
   return universityDetails[id] || null;
+};
+
+// New function to update university details
+export const updateUniversityDetail = (updatedUniversity: UniversityDetail): void => {
+  // Update the details record
+  universityDetails[updatedUniversity.id] = updatedUniversity;
+  
+  // Also update the basic information in the universities array
+  const index = universities.findIndex(uni => uni.id === updatedUniversity.id);
+  if (index !== -1) {
+    universities[index] = {
+      id: updatedUniversity.id,
+      name: updatedUniversity.name,
+      description: updatedUniversity.description,
+      location: updatedUniversity.location,
+      imageUrl: updatedUniversity.imageUrl,
+      type: updatedUniversity.type
+    };
+  }
+
+  // In a real application, this would persist to a database
+  // For this demo, the data is only stored in memory and will reset on page refresh
+  console.log("University updated:", updatedUniversity);
 };
 
 export const getFilteredUniversities = (
