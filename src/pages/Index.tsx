@@ -14,16 +14,20 @@ const Index = () => {
   const [specificUniversities, setSpecificUniversities] = useState<UniversityProps[]>([]);
   
   useEffect(() => {
-    // Get all universities and filter to show only Studienkollegs
+    // Get all universities
     const allUniversities = getAllUniversities();
     
     // Get specific universities the user is looking for
+    const targetCities = ["frankfurt", "halle", "jena", "nordhausen", "bochum", "wismar", "darmstadt"];
+    
     const specificUnis = allUniversities.filter(uni => 
-      ["frankfurt", "halle", "jena", "nordhausen", "bochum", "wismar", "darmstadt"].some(
+      targetCities.some(
         keyword => uni.name.toLowerCase().includes(keyword.toLowerCase()) || 
                   uni.location.toLowerCase().includes(keyword.toLowerCase())
       )
     );
+    
+    console.log("Found specific universities:", specificUnis);
     
     // Regular featured studienkollegs
     const studienkollegs = allUniversities
@@ -31,7 +35,7 @@ const Index = () => {
       .slice(0, 6); // Limit to 6 for display
     
     setFeaturedUniversities(studienkollegs);
-    setSpecificUniversities(specificUnis);
+    setSpecificUniversities(specificUnis.length > 0 ? specificUnis : studienkollegs);
   }, []);
 
   return (
@@ -100,16 +104,25 @@ const Index = () => {
           {/* Highlighted Universities Section */}
           <section className="mb-16">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-bold">Featured Universities</h2>
+              <h2 className="text-2xl font-bold">Universitäten in Frankfurt, Halle, Jena, Nordhausen, Bochum, Wismar, Darmstadt</h2>
               <Link to="/results">
                 <Button variant="outline">Alle anzeigen</Button>
               </Link>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {specificUniversities.map((university) => (
-                <UniversityCard key={university.id} university={university} />
-              ))}
+              {specificUniversities.length > 0 ? (
+                specificUniversities.map((university) => (
+                  <UniversityCard key={university.id} university={university} />
+                ))
+              ) : (
+                <div className="col-span-3 text-center py-8">
+                  <p className="text-gray-500">Diese Universitäten werden bald hinzugefügt.</p>
+                  <Link to="/results" className="text-primary hover:underline mt-2 inline-block">
+                    Alle Universitäten anzeigen
+                  </Link>
+                </div>
+              )}
             </div>
           </section>
           
