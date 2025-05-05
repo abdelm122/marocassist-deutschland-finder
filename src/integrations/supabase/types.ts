@@ -9,7 +9,197 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      admins: {
+        Row: {
+          password: string
+          username: string
+        }
+        Insert: {
+          password: string
+          username: string
+        }
+        Update: {
+          password?: string
+          username?: string
+        }
+        Relationships: []
+      }
+      required_documents: {
+        Row: {
+          document_name: string
+          id: number
+          university_id: string | null
+        }
+        Insert: {
+          document_name: string
+          id?: number
+          university_id?: string | null
+        }
+        Update: {
+          document_name?: string
+          id?: number
+          university_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "required_documents_university_id_fkey"
+            columns: ["university_id"]
+            isOneToOne: false
+            referencedRelation: "universities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      semester_availability: {
+        Row: {
+          id: number
+          semester: string
+          university_id: string | null
+        }
+        Insert: {
+          id?: number
+          semester: string
+          university_id?: string | null
+        }
+        Update: {
+          id?: number
+          semester?: string
+          university_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "semester_availability_university_id_fkey"
+            columns: ["university_id"]
+            isOneToOne: false
+            referencedRelation: "universities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      Studienkollegs: {
+        Row: {
+          created_at: string
+          id: number
+          Name_STK: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          Name_STK?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          Name_STK?: string | null
+        }
+        Relationships: []
+      }
+      test_requirements: {
+        Row: {
+          id: number
+          test_name: string
+          university_id: string | null
+        }
+        Insert: {
+          id?: number
+          test_name: string
+          university_id?: string | null
+        }
+        Update: {
+          id?: number
+          test_name?: string
+          university_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "test_requirements_university_id_fkey"
+            columns: ["university_id"]
+            isOneToOne: false
+            referencedRelation: "universities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      universities: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          image_url: string
+          location: string
+          name: string
+          type: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id: string
+          image_url: string
+          location: string
+          name: string
+          type: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          image_url?: string
+          location?: string
+          name?: string
+          type?: string
+        }
+        Relationships: []
+      }
+      university_details: {
+        Row: {
+          address: string | null
+          application_deadline: string | null
+          application_method: string | null
+          application_test_date: string | null
+          bundesland: string | null
+          email: string | null
+          kurse: string | null
+          language_requirements: string | null
+          status: string | null
+          university_id: string
+          website_url: string | null
+        }
+        Insert: {
+          address?: string | null
+          application_deadline?: string | null
+          application_method?: string | null
+          application_test_date?: string | null
+          bundesland?: string | null
+          email?: string | null
+          kurse?: string | null
+          language_requirements?: string | null
+          status?: string | null
+          university_id: string
+          website_url?: string | null
+        }
+        Update: {
+          address?: string | null
+          application_deadline?: string | null
+          application_method?: string | null
+          application_test_date?: string | null
+          bundesland?: string | null
+          email?: string | null
+          kurse?: string | null
+          language_requirements?: string | null
+          status?: string | null
+          university_id?: string
+          website_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "university_details_university_id_fkey"
+            columns: ["university_id"]
+            isOneToOne: true
+            referencedRelation: "universities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

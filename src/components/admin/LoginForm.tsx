@@ -5,18 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Lock, User } from "lucide-react";
+import { Loader2, Lock, User } from "lucide-react";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const { login, isLoading } = useAuth();
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const success = login(username, password);
+    const success = await login(username, password);
     
     if (!success) {
       toast({
@@ -51,6 +51,7 @@ const LoginForm = () => {
               placeholder="Benutzername eingeben"
               className="pl-10"
               required
+              disabled={isLoading}
             />
           </div>
         </div>
@@ -69,12 +70,20 @@ const LoginForm = () => {
               placeholder="Passwort eingeben"
               className="pl-10"
               required
+              disabled={isLoading}
             />
           </div>
         </div>
         
-        <Button type="submit" className="w-full">
-          Anmelden
+        <Button type="submit" className="w-full" disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Anmeldung läuft...
+            </>
+          ) : (
+            "Anmelden"
+          )}
         </Button>
       </form>
     </div>

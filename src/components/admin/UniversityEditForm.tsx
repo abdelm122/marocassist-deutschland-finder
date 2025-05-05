@@ -16,7 +16,7 @@ import {
   FormMessage 
 } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Save } from "lucide-react";
+import { Loader2, Save } from "lucide-react";
 
 const universityFormSchema = z.object({
   id: z.string(),
@@ -46,9 +46,15 @@ interface UniversityEditFormProps {
   university: UniversityDetail;
   onSave: (university: UniversityDetail) => void;
   onCancel: () => void;
+  isSaving?: boolean;
 }
 
-const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditFormProps) => {
+const UniversityEditForm = ({ 
+  university, 
+  onSave, 
+  onCancel, 
+  isSaving = false 
+}: UniversityEditFormProps) => {
   const form = useForm<UniversityFormValues>({
     resolver: zodResolver(universityFormSchema),
     defaultValues: {
@@ -75,7 +81,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -89,7 +95,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Standort</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -103,7 +109,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Typ</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -117,7 +123,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Bundesland</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -131,7 +137,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Bewerbungsfrist</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -145,7 +151,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Aufnahmetest-Datum</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -159,7 +165,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Sprachanforderungen</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -173,7 +179,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Website URL</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -187,7 +193,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>E-Mail</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -201,7 +207,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Adresse</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -215,7 +221,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Status</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -229,7 +235,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Kurse</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -243,7 +249,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
               <FormItem>
                 <FormLabel>Bewerbungsmethode</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input {...field} disabled={isSaving} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -261,6 +267,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
                 <Textarea 
                   {...field} 
                   className="min-h-[100px]"
+                  disabled={isSaving}
                 />
               </FormControl>
               <FormMessage />
@@ -275,7 +282,7 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
             <FormItem>
               <FormLabel>Bild URL</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input {...field} disabled={isSaving} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -283,12 +290,21 @@ const UniversityEditForm = ({ university, onSave, onCancel }: UniversityEditForm
         />
         
         <div className="flex justify-end gap-4">
-          <Button type="button" variant="outline" onClick={onCancel}>
+          <Button type="button" variant="outline" onClick={onCancel} disabled={isSaving}>
             Abbrechen
           </Button>
-          <Button type="submit">
-            <Save className="mr-2 h-4 w-4" />
-            Speichern
+          <Button type="submit" disabled={isSaving}>
+            {isSaving ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Speichern...
+              </>
+            ) : (
+              <>
+                <Save className="mr-2 h-4 w-4" />
+                Speichern
+              </>
+            )}
           </Button>
         </div>
       </form>

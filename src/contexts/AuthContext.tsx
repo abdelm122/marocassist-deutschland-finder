@@ -1,25 +1,29 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { verifyAdminCredentials } from "@/services/supabaseService";
 
 // Define the context shape
 type AuthContextType = {
   isAuthenticated: boolean;
   user: string | null;
-  login: (username: string, password: string) => boolean;
+  login: (username: string, password: string) => Promise<boolean>;
   logout: () => void;
+  isLoading: boolean;
 };
 
 // Create the context with default values
 const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
   user: null,
-  login: () => false,
+  login: async () => false,
   logout: () => {},
+  isLoading: false,
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Check if the user is already logged in (from localStorage)
   useEffect(() => {
@@ -28,18 +32,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(storedUser);
       setIsAuthenticated(true);
     }
+    setIsLoading(false);
   }, []);
 
-  // Login function - for simplicity, just checking for the hardcoded user
-  const login = (username: string, password: string): boolean => {
-    // Hardcoded credentials - in a real app, this would use proper auth
-    if (username === "Abdel122" && password === "admin123") {
-      setUser(username);
-      setIsAuthenticated(true);
-      localStorage.setItem("adminUser", username);
-      return true;
+  // Login function - verifies credentials against Supabase admins table
+  const login = async (username: string, password: string): Promise<boolean> => {
+    setIsLoading(true);
+    try {
+      const isValid = await verifyAdminCredentials(username, password);
+      
+      if (isValid) {
+        setUser(username);
+        setIsAuthenticated(true);
+        localStorage.setItem("adminUser", username);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error("Login error:", error);
+      return false;
+    } finally {
+      setIsLoading(false);
     }
-    return false;
   };
 
   // Logout function
@@ -50,7 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, logout, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

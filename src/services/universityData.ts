@@ -1,109 +1,49 @@
+
 import { UniversityProps, UniversityDetail } from "../types/universityTypes";
-import { studienkollegs } from "../data/studienkollegs";
-import { sprachinstitute } from "../data/sprachinstitute";
-import { studienkollegDetails } from "../data/studienkollegDetails";
-import { sprachinstitutDetails } from "../data/sprachinstitutDetails";
+import { 
+  fetchAllUniversities, 
+  fetchUniversityById, 
+  updateUniversityDetail as updateUniversityInSupabase,
+  filterUniversities
+} from "./supabaseService";
 
-// Combine all universities
-const universities: UniversityProps[] = [
-  ...studienkollegs,
-  ...sprachinstitute
-];
-
-// Combine all details
-const universityDetails: Record<string, UniversityDetail> = {
-  ...studienkollegDetails,
-  ...sprachinstitutDetails
+// Export functions to access data that now use Supabase
+export const getAllUniversities = async (): Promise<UniversityProps[]> => {
+  return await fetchAllUniversities();
 };
 
-// Export functions to access data
-export const getAllUniversities = () => universities;
-
-export const getUniversityById = (id: string): UniversityDetail | null => {
-  return universityDetails[id] || null;
+export const getUniversityById = async (id: string): Promise<UniversityDetail | null> => {
+  return await fetchUniversityById(id);
 };
 
-// New function to update university details
-export const updateUniversityDetail = (updatedUniversity: UniversityDetail): void => {
-  // Update the details record
-  universityDetails[updatedUniversity.id] = updatedUniversity;
-  
-  // Also update the basic information in the universities array
-  const index = universities.findIndex(uni => uni.id === updatedUniversity.id);
-  if (index !== -1) {
-    universities[index] = {
-      id: updatedUniversity.id,
-      name: updatedUniversity.name,
-      description: updatedUniversity.description,
-      location: updatedUniversity.location,
-      imageUrl: updatedUniversity.imageUrl,
-      type: updatedUniversity.type
-    };
-  }
-
-  // In a real application, this would persist to a database
-  // For this demo, the data is only stored in memory and will reset on page refresh
-  console.log("University updated:", updatedUniversity);
+// Update university details - now uses Supabase
+export const updateUniversityDetail = async (updatedUniversity: UniversityDetail): Promise<void> => {
+  await updateUniversityInSupabase(updatedUniversity);
 };
 
-export const getFilteredUniversities = (
+// Filtering universities - now uses Supabase
+export const getFilteredUniversities = async (
   searchQuery: string = "", 
   types: string[] = []
-): UniversityProps[] => {
-  return universities.filter((university) => {
-    // Filter by search query
-    const matchesSearch = searchQuery === "" || 
-      university.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-      university.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      university.location.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    // Filter by types (if any are selected)
-    const matchesType = types.length === 0 || types.includes(university.type);
-    
-    return matchesSearch && matchesType;
-  });
+): Promise<UniversityProps[]> => {
+  return await filterUniversities(searchQuery, { type: types });
 };
 
-// Add the searchUniversities function
-export const searchUniversities = (
+// Search universities - now uses Supabase
+export const searchUniversities = async (
   query: string = "", 
   filters: {
     language?: string[],
     type?: string[],
     semester?: string[]
   } = {}
-): UniversityProps[] => {
-  console.log("Filtering with:", { query, filters });
-  
-  return universities.filter((university) => {
-    // Filter by search query
-    const matchesSearch = query === "" || 
-      university.name.toLowerCase().includes(query.toLowerCase()) || 
-      university.description.toLowerCase().includes(query.toLowerCase()) ||
-      university.location.toLowerCase().includes(query.toLowerCase());
-    
-    // Filter by university type
-    const matchesType = !filters.type || filters.type.length === 0 || 
-      filters.type.includes(university.type);
-    
-    // Get university details for additional filtering
-    const details = universityDetails[university.id];
-    
-    // Filter by language level
-    const matchesLanguage = !filters.language || filters.language.length === 0 ||
-      (details && filters.language.some(lang => 
-        details.languageRequirements && details.languageRequirements.includes(lang.toUpperCase())
-      ));
-    
-    return matchesSearch && matchesType && matchesLanguage;
-  });
+): Promise<UniversityProps[]> => {
+  return await filterUniversities(query, filters);
 };
 
 // Function to check if application deadline is still open
-export const checkDeadlineStatus = (universityId: string): "open" | "closed" => {
-  const details = universityDetails[universityId];
-  
-  if (!details || !details.applicationDeadline) {
+export const checkDeadlineStatus = (deadline: string | undefined): "open" | "closed" => {
+  if (!deadline) {
     return "closed"; // Default to closed if no deadline info
   }
   
@@ -113,7 +53,7 @@ export const checkDeadlineStatus = (universityId: string): "open" | "closed" => 
   const currentDay = currentDate.getDate();
   
   // Parse the application deadline
-  const deadlineParts = details.applicationDeadline.split(".");
+  const deadlineParts = deadline.split(".");
   if (deadlineParts.length !== 3) {
     return "closed"; // Invalid format
   }
@@ -130,5 +70,5 @@ export const checkDeadlineStatus = (universityId: string): "open" | "closed" => 
   return today <= deadlineDate ? "open" : "closed";
 };
 
-// Re-export types for easier imports elsewhere - Fix with 'export type'
+// Re-export types for easier imports elsewhere
 export type { UniversityProps, UniversityDetail } from "../types/universityTypes";

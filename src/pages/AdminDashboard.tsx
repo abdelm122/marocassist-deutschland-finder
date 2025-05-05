@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { 
-  getAllUniversities, 
-  getUniversityById, 
+  fetchAllUniversities, 
+  fetchUniversityById, 
   updateUniversityDetail 
-} from "@/services/universityData";
+} from "@/services/supabaseService";
 import { UniversityProps, UniversityDetail } from "@/types/universityTypes";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, LogOut, Save } from "lucide-react";
+import { Edit, Loader2, LogOut, Save } from "lucide-react";
 import UniversityEditForm from "@/components/admin/UniversityEditForm";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
@@ -20,54 +20,85 @@ const AdminDashboard = () => {
   const [universities, setUniversities] = useState<UniversityProps[]>([]);
   const [selectedUniversity, setSelectedUniversity] = useState<UniversityDetail | null>(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
   const { toast } = useToast();
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user, logout, isLoading: authLoading } = useAuth();
 
   useEffect(() => {
-    const fetchUniversities = () => {
-      const allUniversities = getAllUniversities();
-      setUniversities(allUniversities);
+    const fetchUniversities = async () => {
+      try {
+        setIsLoading(true);
+        const allUniversities = await fetchAllUniversities();
+        setUniversities(allUniversities);
+      } catch (error) {
+        console.error("Error fetching universities:", error);
+        toast({
+          title: "Fehler",
+          description: "Universitäten konnten nicht geladen werden.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
     };
 
-    if (isAuthenticated) {
+    if (isAuthenticated && !authLoading) {
       fetchUniversities();
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, authLoading, toast]);
 
-  const handleEditClick = (id: string) => {
-    const universityDetail = getUniversityById(id);
-    
-    if (universityDetail) {
-      setSelectedUniversity(universityDetail);
-      setIsEditing(true);
-    } else {
+  const handleEditClick = async (id: string) => {
+    try {
+      setIsLoading(true);
+      const universityDetail = await fetchUniversityById(id);
+      
+      if (universityDetail) {
+        setSelectedUniversity(universityDetail);
+        setIsEditing(true);
+      } else {
+        toast({
+          title: "Fehler",
+          description: "Universität konnte nicht gefunden werden",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching university details:", error);
       toast({
         title: "Fehler",
-        description: "Universität konnte nicht gefunden werden",
+        description: "Universität konnte nicht geladen werden",
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleSaveUniversity = (updatedUniversity: UniversityDetail) => {
+  const handleSaveUniversity = async (updatedUniversity: UniversityDetail) => {
     try {
-      updateUniversityDetail(updatedUniversity);
+      setIsSaving(true);
+      await updateUniversityDetail(updatedUniversity);
       setIsEditing(false);
       setSelectedUniversity(null);
       
       // Refresh the list
-      setUniversities(getAllUniversities());
+      const refreshedList = await fetchAllUniversities();
+      setUniversities(refreshedList);
       
       toast({
         title: "Erfolgreich gespeichert",
         description: `Die Änderungen für ${updatedUniversity.name} wurden gespeichert.`,
       });
     } catch (error) {
+      console.error("Error saving university:", error);
       toast({
         title: "Fehler beim Speichern",
         description: "Die Änderungen konnten nicht gespeichert werden.",
         variant: "destructive",
       });
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -83,6 +114,22 @@ const AdminDashboard = () => {
       description: "Sie wurden erfolgreich abgemeldet.",
     });
   };
+
+  // If authentication is still loading, show a loading indicator
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow flex items-center justify-center py-10 px-4">
+          <div className="text-center">
+            <Loader2 className="h-10 w-10 animate-spin mx-auto mb-4 text-blue-600" />
+            <p className="text-lg text-gray-600">Wird geladen...</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   // If not authenticated, show the login form
   if (!isAuthenticated) {
@@ -120,7 +167,12 @@ const AdminDashboard = () => {
             Hier können Sie die Informationen zu Universitäten und Studienkollegs bearbeiten.
           </p>
           
-          {isEditing && selectedUniversity ? (
+          {isLoading ? (
+            <div className="text-center py-12">
+              <Loader2 className="h-10 w-10 animate-spin mx-auto mb-4 text-blue-600" />
+              <p className="text-lg text-gray-600">Daten werden geladen...</p>
+            </div>
+          ) : isEditing && selectedUniversity ? (
             <div className="bg-white rounded-lg shadow-md p-6 mb-8">
               <h2 className="text-2xl font-semibold mb-4">
                 {selectedUniversity.name} bearbeiten
@@ -129,6 +181,7 @@ const AdminDashboard = () => {
                 university={selectedUniversity} 
                 onSave={handleSaveUniversity}
                 onCancel={handleCancelEdit}
+                isSaving={isSaving}
               />
             </div>
           ) : (
@@ -144,15 +197,20 @@ const AdminDashboard = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {universities.map((university) => {
-                    const details = getUniversityById(university.id);
-                    return (
+                  {universities.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={5} className="text-center py-8">
+                        Keine Universitäten gefunden.
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    universities.map((university) => (
                       <TableRow key={university.id}>
                         <TableCell className="font-medium">{university.name}</TableCell>
                         <TableCell>{university.location}</TableCell>
                         <TableCell>{university.type}</TableCell>
                         <TableCell>
-                          {details?.applicationDeadline || "Keine Angabe"}
+                          <span className="text-gray-600 italic">Wird geladen...</span>
                         </TableCell>
                         <TableCell>
                           <Button 
@@ -165,8 +223,8 @@ const AdminDashboard = () => {
                           </Button>
                         </TableCell>
                       </TableRow>
-                    );
-                  })}
+                    ))
+                  )}
                 </TableBody>
               </Table>
             </div>
