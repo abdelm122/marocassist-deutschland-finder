@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getUniversityById, UniversityDetail } from "@/services/universityData";
@@ -11,16 +10,33 @@ const UniversityDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const [university, setUniversity] = useState<UniversityDetail | null>(null);
   const [notFound, setNotFound] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (id) {
-      const universityData = getUniversityById(id);
-      if (universityData) {
-        setUniversity(universityData);
-      } else {
+    const fetchUniversity = async () => {
+      if (!id) {
         setNotFound(true);
+        setIsLoading(false);
+        return;
       }
-    }
+      
+      try {
+        setIsLoading(true);
+        const universityData = await getUniversityById(id);
+        if (universityData) {
+          setUniversity(universityData);
+        } else {
+          setNotFound(true);
+        }
+      } catch (error) {
+        console.error("Error fetching university:", error);
+        setNotFound(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    fetchUniversity();
   }, [id]);
 
   if (notFound) {
@@ -43,7 +59,7 @@ const UniversityDetailPage = () => {
     );
   }
 
-  if (!university) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
@@ -60,6 +76,10 @@ const UniversityDetailPage = () => {
         <Footer />
       </div>
     );
+  }
+
+  if (!university) {
+    return null; // This shouldn't happen, but just in case
   }
 
   const isStudienkolleg = university.type === "Studienkolleg";
